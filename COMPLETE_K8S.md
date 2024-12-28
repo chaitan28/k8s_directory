@@ -1,5 +1,5 @@
 ![KUBERNETES ARCHITECTURE](K8S.jpg)
-### MASTER NODE <br>
+## MASTER NODE <br>
 1. Api Server <br>
 Its handles requests (kubectl, other services), and validates configurations.<br>
 2. Control Manager: <br>
@@ -14,7 +14,7 @@ Database for the cluster, stores all the infomation of the cluster<br>
 Assigns workloads (Pods) to available nodes.<br>
 
 
-### WORKER NODE
+## WORKER NODE
 1. kubelet:<br>
    manages the Pods and regularly checks whether the pod is running or not defined as per in PodSpecs.<br>
    If Pod is not responding the kubelet will ensure that pod will be replaced or restarted.<br>
@@ -23,7 +23,7 @@ Assigns workloads (Pods) to available nodes.<br>
    Communication inside the cluster. Assigns IPs to the pods <br>
 3. container runtime <br>
    The softwate which responsible  for running container<br>
-4. Pods: 
+4. Pods:  <br>
 A pod is a very small unit that contains a container or multiple containers where
 the application is deployed.  It’s good to have one container under each pod. <br>
    ### ALL THE COMPONENTS ARE WORKING AS PODS BY ITSELF. BUT KUBELET IS DEPLOYED AS DEMON SERVICE
