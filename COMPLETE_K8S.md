@@ -10,7 +10,7 @@ Endpoint Controller:        Populates endpoint objects.<br>
 Service Account Controller: Manages default accounts.<br>
 3. **ECTD** <br>
 Database for the cluster, stores all the infomation of the cluster<br>
-4. Kube-Scheduler: <br>
+4. **Kube-Scheduler**: <br>
 Assigns workloads (Pods) to available nodes.<br>
 
 
@@ -30,23 +30,23 @@ the application is deployed.  It’s good to have one container under each pod. 
 
 
 ## Features of Kubernetes<br>
-1. AutoScaling:<br>
+1. __AutoScaling__<br>
  Kubernetes supports two types of autoscaling horizontal and vertical
 scaling for large-scale production environments which helps to reduce the downtime of
 the applications.<br>
-2. Auto Healing: <br>
+2. __Auto Healing__ <br>
 containers will automatically repaired or heal and run again properly.<br>
-3. Load Balancing: <br>
+3.__Load Balancing__ <br>
 With the help of load balancing, Kubernetes distributes the traffic<br>
 between two or more containers.<br>
-4. Platform Independent: <br>
+4.__Platform Independent__ <br>
 Kubernetes can work on any type of infrastructure whether it’s On-premises, Virtual Machines, or any Cloud.<br>
 5. Fault Tolerance: <br>
 Kubernetes helps to notify nodes or pods failures and create new pods or containers as soon as possible<br>
-5. Rollback:<br>
+6. __Rollback__ <br>
 You can switch to the previous version.<br>
-6. Health Monitoring of Containers: <br>
+7. __Health Monitoring of Containers__ <br>
 Regularly check the health of the monitor and if any container fails, create a new container.<br>
-7. Orchestration: <br>
+8. __Orchestration__  <br>
 Suppose, three containers are running on different networks<br>
 (On-premises, Virtual Machines, and On the Cloud). Kubernetes can create one cluster<br>
