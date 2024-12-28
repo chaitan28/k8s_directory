@@ -9,7 +9,7 @@ Replication Controller:     Ensures desired number of pod replicas.<br>
 Endpoint Controller:        Populates endpoint objects.<br>
 Service Account Controller: Manages default accounts.<br>
 3. ECTD <br>
-database for the cluster, stores all the infomation of the cluster<br>
+Database for the cluster, stores all the infomation of the cluster<br>
 4. Kube-Scheduler: <br>
 Assigns workloads (Pods) to available nodes.<br>
 
@@ -17,10 +17,10 @@ Assigns workloads (Pods) to available nodes.<br>
 
 ### WORKER NODE
 1. kubelet:<br>
-  It is responsible containers are running as defined in PodSpecs.<br>
+   It is responsible containers are running as defined in PodSpecs.<br>
 2. kubeproxy:<br>
-    communication inside the cluster. Assigns IPs to the pods <br>
+   Communication inside the cluster. Assigns IPs to the pods <br>
 3. container runtime <br>
-   the softwate which responsible  for running container<br>
+   The softwate which responsible  for running container<br>
 
    ### ALL THE COMPONENTS ARE WORKING AS PODS BY ITSELF. BUT KUBELET IS DEPLOYED AS DEMONSETS
