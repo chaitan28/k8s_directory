@@ -1,16 +1,17 @@
 ![KUBERNETES ARCHITECTURE](K8S.jpg)
 ### MASTER NODE <br>
 1. Api Server <br>
- :  handles requests (kubectl, other services), and validates configurations.<br>
+Its handles requests (kubectl, other services), and validates configurations.<br>
 2. Control Manager: <br>
 Runs control loop processes like:<br>
 Node Controller:            Manages node status.<br>
 Replication Controller:     Ensures desired number of pod replicas.<br>
 Endpoint Controller:        Populates endpoint objects.<br>
 Service Account Controller: Manages default accounts.<br>
-3. ECTD : database for the cluster, stores all the infomation of the cluster<br>
+3. ECTD <br>
+database for the cluster, stores all the infomation of the cluster<br>
 4. Kube-Scheduler: <br>
-   Assigns workloads (Pods) to available nodes.<br>
+Assigns workloads (Pods) to available nodes.<br>
 
 
 
