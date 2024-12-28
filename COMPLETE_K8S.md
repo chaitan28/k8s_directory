@@ -1,4 +1,3 @@
-
 ![KUBERNETES ARCHITECTURE](K8S.jpg)
 ### MASTER NODE <br>
 1. Api Server <br>
