@@ -13,6 +13,7 @@ Service Account Controller: Manages default accounts.<br>
    Assigns workloads (Pods) to available nodes.<br>
 
 
+
 ### WOEKER NODE
 1. kubelet:<br>
   It is responsible containers are running as defined in PodSpecs.<br>
