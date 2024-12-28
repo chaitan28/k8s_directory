@@ -20,7 +20,7 @@ Assigns workloads (Pods) to available nodes.<br>
    If Pod is not responding the kubelet will ensure that pod will be replaced or restarted.<br>
    Communicates with the Kubernetes control plane to manage the state of the pods.<br>
 2. **kubeproxy**<br>
-   Communication inside the cluster. Assigns IPs to the pods <br>
+   Communication inside the cluster. Assigns IPs to the pods. Manages kubernetes Services (ClusterIP, NodePort, LoadBalancer)for Pods.<br>
 3. **container runtime** <br>
    The softwate which responsible  for running container<br>
 4. **Pods:**  <br>
