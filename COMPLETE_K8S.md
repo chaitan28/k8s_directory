@@ -19,7 +19,7 @@ Assigns workloads (Pods) to available nodes.<br>
 1. kubelet:<br>
   It is responsible containers are running as defined in PodSpecs.<br>
 2. kubeproxy:<br>
-    communication inside the cluster. Assigns Ip to the pods <br>
+    communication inside the cluster. Assigns IPs to the pods <br>
 3. container runtime <br>
    the softwate which responsible  for running container<br>
 
