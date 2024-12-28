@@ -20,9 +20,10 @@ kops version
 ```
 ### nano ~/.bashrc
 export NAME=www.whytebatl.com<br>
-export KOPS_STATE_STORE= s3://www.whytebatl.com<br>
+export KOPS_STATE_STORE=s3://www.whytebatl.com<br>
 export AWS_REGION=us-east-1<br>
 export CLUSTER_NAME=whytebatl.com<br>
 export EDITOR='/usr/bin/nano'<br>
+If using nano, press CTRL+O, then Enter to save. Press CTRL+X to exit the editor.<br>
 
-### After copying the above files to .bashrc run “ source .bashrc ”.
+### After copying the above files to .bashrc run “ source ~/.bashrc ”.
