@@ -37,8 +37,7 @@ the applications.<br>
 2. __Auto Healing__ <br>
 containers will automatically repaired or heal and run again properly.<br>
 3. __Load Balancing__ <br>
-With the help of load balancing, Kubernetes distributes the traffic<br>
-between two or more containers.<br>
+With the help of load balancing, Kubernetes distributes the traffic between two or more containers.<br>
 4. __Platform Independent__ <br>
 Kubernetes can work on any type of infrastructure whether it’s On-premises, Virtual Machines, or any Cloud.<br>
 5. __Fault Tolerance__ <br>
