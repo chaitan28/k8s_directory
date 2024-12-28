@@ -26,3 +26,15 @@ Kubelet: A service, not a Pod, running outside Kubernetes.
 Kube-proxy: A DaemonSet Pod in kube-system.
 CRI: A runtime process, not visible as a Pod
 kubectl get daemonset -n kube-system
+
+
+# Why is kube-proxy Missing in KOPS Cluster ?
+If kube-proxy is missing, it could mean
+
+Kube-proxy is not deployed:
+
+Kops might have been configured to use another networking solution (e.g., Cilium) that doesn't require kube-proxy.
+Custom Networking (e.g., Cilium):
+
+Cilium is a powerful alternative to kube-proxy and provides networking features like eBPF-based routing.
+If Cilium is configured, kube-proxy might not be necessary.
