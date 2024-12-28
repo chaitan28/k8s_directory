@@ -24,8 +24,8 @@ Assigns workloads (Pods) to available nodes.<br>
 3. **container runtime** <br>
    The softwate which responsible  for running container<br>
 4. **Pods:**  <br>
-A pod is a very small unit that contains a container or multiple containers where
-the application is deployed.  It’s good to have one container under each pod. <br>
+Acts as Shell for the container or multiple containers where the application is deployed.  It’s good to have one container under each pod. <br>
+
    **ALL THE COMPONENTS ARE WORKING AS PODS BY ITSELF. BUT KUBELET IS DEPLOYED AS DEMON SERVICE**
 
 
