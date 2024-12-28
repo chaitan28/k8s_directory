@@ -1,0 +1,28 @@
+# apiserver IP is configured to all components , means all the components are running on control-plane. 
+
+$ kubectl get po -o wide -n kube-system | grep -i api
+kube-apiserver-i-0f665f13fb2cb96a2              2/2     Running   1 (31m ago)   30m   172.20.88.38     i-0f665f13fb2cb96a2   <none>           <none>
+
+$ kubectl get po -o wide -n kube-system | grep -i controller
+aws-cloud-controller-manager-m5dxg              1/1     Running   0             29m   172.20.88.38     i-0f665f13fb2cb96a2   <none>           <none>
+dns-controller-f5fc5c57d-tvvsd                  1/1     Running   0             29m   172.20.88.38     i-0f665f13fb2cb96a2   <none>           <none>
+ebs-csi-controller-5b8fb554d6-57kjn             5/5     Running   0             29m   172.20.88.38     i-0f665f13fb2cb96a2   <none>           <none>
+kops-controller-dvf7s                           1/1     Running   0             29m   172.20.88.38     i-0f665f13fb2cb96a2   <none>           <none>
+kube-controller-manager-i-0f665f13fb2cb96a2     1/1     Running   3 (30m ago)   29m   172.20.88.38     i-0f665f13fb2cb96a2   <none>           <none>
+
+$ kubectl get po -o wide -n kube-system | grep -i controller
+aws-cloud-controller-manager-m5dxg              1/1     Running   0             29m   172.20.88.38     i-0f665f13fb2cb96a2   <none>           <none>
+dns-controller-f5fc5c57d-tvvsd                  1/1     Running   0             29m   172.20.88.38     i-0f665f13fb2cb96a2   <none>           <none>
+ebs-csi-controller-5b8fb554d6-57kjn             5/5     Running   0             29m   172.20.88.38     i-0f665f13fb2cb96a2   <none>           <none>
+kops-controller-dvf7s                           1/1     Running   0             29m   172.20.88.38     i-0f665f13fb2cb96a2   <none>           <none>
+kube-controller-manager-i-0f665f13fb2cb96a2     1/1     Running   3 (30m ago)   29m   172.20.88.38     i-0f665f13fb2cb96a2   <none>           <none>
+
+$ kubectl get po -o wide -n kube-system | grep -i etcd
+etcd-manager-events-i-0f665f13fb2cb96a2         1/1     Running   0             31m   172.20.88.38     i-0f665f13fb2cb96a2   <none>           <none>
+etcd-manager-main-i-0f665f13fb2cb96a2           1/1     Running   0             31m   172.20.88.38     i-0f665f13fb2cb96a2   <none>           <none>
+
+# workerNode
+Kubelet: A service, not a Pod, running outside Kubernetes.
+Kube-proxy: A DaemonSet Pod in kube-system.
+CRI: A runtime process, not visible as a Pod
+kubectl get daemonset -n kube-system
