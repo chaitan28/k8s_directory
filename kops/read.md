@@ -29,12 +29,14 @@ After copying the above files to .bashrc run “ source ~/.bashrc ” <br>
 
 ### Create a Cluster using Kops and generate a cluster file and save it carefully and do neccessary changes
 ```bash
+
 kops create cluster --name=www.whytebatl.com \ 
 --state=s3://www.whytebatl.com --zones=us-east-1a,us-east-1b \
 --node-count=2 --control-plane-count=1 --node-size=t3.medium --control-plane-size=t3.medium \
 --control-plane-zones=us-east-1a --control-plane-volume-size 10 --node-volume-size 10 \
 --ssh-public-key ~/.ssh/custom.pub \
 --dns-zone=www.whytebatl.com  --dry-run --output yaml
+
 ```
 
 ####  One done run below commands to create the cluster 
