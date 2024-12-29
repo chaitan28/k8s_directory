@@ -1,5 +1,5 @@
 
-![DEPLOYMENT](deploy.jpg)
+![DEPLOYMENT](deployment.jpg)
 
 #  Overview on Pods, Deployments, Namespaces, Services, and Commands
 
