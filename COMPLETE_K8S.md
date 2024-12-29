@@ -52,6 +52,6 @@ Suppose, three containers are running on different networks<br>
 
 ![KUBERNETES ARCHITECTURE](Pod.jpg)
 ## POD EXPLAINATION<br>
-1. Main Container: This runs the primary application (myapp:latest).<br>
-2. Sidecar Container: Provides auxiliary functions (e.g., data sync, logging).<br>
-3. Shared Data Volume: Both containers share the shared-data volume, enabling them to exchange data via the file system.<br>
+1. **Main Container:**     This runs the primary application (myapp:latest).<br>
+2. **Sidecar Container:**  Provides auxiliary functions (e.g., data sync, logging).<br>
+3. **Shared Data Volume:** Both containers share the shared-data volume, enabling them to exchange data via the file system.<br>
