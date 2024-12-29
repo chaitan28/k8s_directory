@@ -41,7 +41,7 @@ Deployments manage the creation and scaling of ReplicaSets, ensuring your applic
 
 ## Namespaces
 
-Namespaces are used to divide cluster resources between multiple users. They are useful for scenarios where multiple teams (e.g., Alpha and Bravo teams) share the same cluster but require resource isolation.
+Namespaces are used to divide cluster resources between multiple users. They are useful for scenarios where multiple teams (e.g., dev or qa teams) share the same cluster but require resource isolation.
 
 ### Commands
 
