@@ -1,4 +1,6 @@
 
+![DEPLOYMENT](deploy.jpg)
+
 #  Overview on Pods, Deployments, Namespaces, Services, and Commands
 
 ## Overview
@@ -32,7 +34,7 @@ Deployments manage the creation and scaling of ReplicaSets, ensuring your applic
 
 - **Imperative Format**: Using kubectl commands.
   ```sh
-  kubectl run alpha1 -n alpha --image=nginx --dry-run=client -o yaml
+  kubectl run nginx -n dev --image=nginx --dry-run=client -o yaml
   ```
 
 - **Declarative Format**: Using YAML files.
@@ -61,7 +63,7 @@ Services provide stable IP addresses and DNS names to Pods. They allow you to ex
 
 - Expose a pod as a service:
   ```sh
-  kubectl expose pod alpha1 --port=8000 --target-port=80 --type=NodePort
+  kubectl expose pod nginx --port=8000 --target-port=80 --type=NodePort
   ```
 - Describe a service:
   ```sh
@@ -97,9 +99,9 @@ Here's a quick reference for common commands used in this tutorial:
   ```
 - Expose a pod:
   ```sh
-  kubectl expose pod alpha1 --port=8000 --target-port=80 --type=NodePort
+  kubectl expose pod nginx --port=8000 --target-port=80 --type=NodePort
   ```
 - Describe a service:
   ```sh
-  kubectl describe svc alpha1
+  kubectl describe svc nginx
   ``
