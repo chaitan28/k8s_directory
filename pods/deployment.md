@@ -95,7 +95,7 @@ Here's a quick reference for common commands used in this tutorial:
 - List pods:
   ```sh
   kubectl get pods
-  kubectl get pods -n alpha
+  kubectl get pods -n dev
   ```
 - Expose a pod:
   ```sh
