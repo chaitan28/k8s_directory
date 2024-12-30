@@ -117,10 +117,19 @@ rm -rf kubectx_v0.9.5_linux_x86_64.tar.gz
   kubectl get pods -n dev
   ```
 - Expose a pod:
-  ```sh
-  kubectl expose pod nginx --port=8000 --target-port=80 --type=NodePort
+```sh
+kubectl get svc
+kubectl expose pod nginx1 --type=NodePort --port=80 --target-port=80 --name=nginx-service
+kubectl delete svc nginx2
+open NODEPORT(GIVEN IN THE SVC) ON THE AWS SG
+DNS:Nodeport
+kubectl describe svc nginx
   ```
-- Describe a service:
-  ```sh
-  kubectl describe svc nginx
-  ``
+
+- Rancher installation 
+```sh
+docker run -d --restart=unless-stopped  -p 80:80 -p 443:443  --privileged  rancher/rancher:latest
+docker logs  58219c96294d   2>&1 | grep "Bootstrap Password:"
+Admin@280324
+curl --insecure -sfL https://54.82.26.66/v3/import/6tfkvcrr4zfp2kt8nrc6x4gckj7p7qlkn5bjl4v4ncdxk68v8lp6pg_c-m-9frqpphw.yaml | kubectl apply -f -
+```
