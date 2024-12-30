@@ -60,7 +60,7 @@ Namespaces are used to divide cluster resources between multiple users. They are
 
 Services provide stable IP addresses and DNS names to Pods. They allow you to expose your applications within or outside the cluster.
 
-## Commands
+### Commands
 
 Here's a quick reference for common commands used in this tutorial:
 
