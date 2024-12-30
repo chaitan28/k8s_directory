@@ -52,6 +52,7 @@ Namespaces are used to divide cluster resources between multiple users. They are
   ```
 - List API resources that are namespaced:
   ```sh
+  kubectl api-resources
   kubectl api-resources --namespaced=true
   ```
 
@@ -79,6 +80,24 @@ Here's a quick reference for common commands used in this tutorial:
   kubectl create ns dev
   kubectl create ns qa
   ```
+- switch between the namspaces(kubens)
+```sh
+sudo su
+cd /usr/local/bin
+wget https://github.com/ahmetb/kubectx/releases/download/v0.9.5/kubens_v0.9.5_linux_x86_64.tar.gz
+tar zxvf kubens_v0.9.5_linux_x86_64.tar.gz
+rm -rf kubens_v0.9.5_linux_x86_64.tar.gz
+```
+
+- Switch  between clusters
+```sh
+sudo su
+cd /usr/local/bin
+wget https://github.com/ahmetb/kubectx/releases/download/v0.9.5/kubectx_v0.9.5_linux_x86_64.tar.gz
+tar zxvf kubectx_v0.9.5_linux_x86_64.tar.gz
+rm -rf kubectx_v0.9.5_linux_x86_64.tar.gz 
+```
+
 - Create a deployment:
   ```sh
   kubectl run nginx -n dev --image=nginx--dry-run=client -o yaml
