@@ -4,7 +4,7 @@ Create A EC2 Instance <br>
 IAM ROLE(ADMIN FULL ACCESS) AND ASSIGN IT TO EC2 <br>
 Connect to  EC2 INSTANCE AND GENERATE SSH ROLE in .ssh/ <br>
 download kops and kubectl to usr/local/bin(default location)
-## Download kubectl
+### Download kubectl
  ```bash
   curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
   echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
@@ -52,4 +52,15 @@ kubectl get po -o wide
 kubectl cluster-info
 kubectl get ns
 kubectl get po -o wide -n kube-system
+```
+
+### Run kubectl commands as default user(ubuntu)
+``sh
+sudo su root
+mkdir -p /home/ubuntu/.kube/
+cp /root/.kube/config /home/ubuntu/.kube/config
+chown -R ubuntu:ubuntu /home/ubuntu/.kube
+chmod 600 /home/ubuntu/.kube/config
+su - ubuntu or sudo su ubuntu
+kubectl get pods
 ```
