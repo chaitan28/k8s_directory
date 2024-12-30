@@ -122,3 +122,12 @@ docker logs  58219c96294d   2>&1 | grep "Bootstrap Password:"
 Admin@280324
 curl --insecure -sfL https://54.82.26.66/v3/import/6tfkvcrr4zfp2kt8nrc6x4gckj7p7qlkn5bjl4v4ncdxk68v8lp6pg_c-m-9frqpphw.yaml | kubectl apply -f -
 ```
+### DETAILS OF NODEPORT 
+```sh
+kubectl expose pod nginx1 --type=NodePort --port=8000 --target-port=80 --name=nginx-service
+kubectl get svc nginx-service
+NAME             TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+nginx-service    NodePort   10.104.104.20   <none>        8000:31000/TCP   1m
+```
+- --port=8000: The service exposes port 8000 to clients. <br>
+- --target-port=80: The service forwards traffic from port 8000 to port 80 inside the NGINX pod.<br>
