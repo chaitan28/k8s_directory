@@ -55,7 +55,7 @@ kubectl get po -o wide -n kube-system
 ```
 
 ### Run kubectl commands as default user(ubuntu)
-``sh
+```sh
 sudo su root
 mkdir -p /home/ubuntu/.kube/
 cp /root/.kube/config /home/ubuntu/.kube/config
