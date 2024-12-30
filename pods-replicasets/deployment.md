@@ -60,17 +60,6 @@ Namespaces are used to divide cluster resources between multiple users. They are
 
 Services provide stable IP addresses and DNS names to Pods. They allow you to expose your applications within or outside the cluster.
 
-### Commands
-
-- Expose a pod as a service:
-  ```sh
-  kubectl expose pod nginx --port=8000 --target-port=80 --type=NodePort
-  ```
-- Describe a service:
-  ```sh
-  kubectl describe svc dev
-  ```
-
 ## Commands
 
 Here's a quick reference for common commands used in this tutorial:
