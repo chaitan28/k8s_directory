@@ -124,8 +124,8 @@ curl --insecure -sfL https://54.82.26.66/v3/import/6tfkvcrr4zfp2kt8nrc6x4gckj7p7
 ```
 ### DETAILS OF NODEPORT 
 ```sh
-kubectl expose pod nginx1 --type=NodePort --port=8000 --target-port=80 --name=nginx-service
-kubectl get svc nginx-service
+$ kubectl expose pod nginx1 --type=NodePort --port=8000 --target-port=80 --name=nginx-service
+$ kubectl get svc nginx-service
  NAME             TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
  nginx-service    NodePort   10.104.104.20   <none>        8000:31000/TCP   1m
 ```
