@@ -144,6 +144,7 @@ metadata:
 ```sh
   kubectl label pod <pod_name> label:<label_name>
 ```
+![nodeport](nodeport.jpg)
 ### DETAILS OF NODEPORT 
 ```sh
 kubectl expose pod nginx1 --type=NodePort --port=8000 --target-port=80 --name=nginx-service
