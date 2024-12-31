@@ -69,6 +69,11 @@ Here's a quick reference for common commands used in this tutorial:
   kubectl create ns dev
   kubectl create ns qa
   ```
+- Default command to switch without kubens 
+```sh
+kubectl config set-context $(kubectl config current-context) --namespace=dev
+
+```
 - switch between the namspaces(kubens)
 ```sh
 sudo su
