@@ -150,7 +150,7 @@ metadata:
 kubectl expose pod nginx1 --type=NodePort --port=8000 --target-port=80 --name=nginx-service
 kubectl get svc nginx-service
  NAME             TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
- nginx-service    NodePort   10.104.104.20   <none>        8000:31000/TCP   1m
+ nginx-service    NodePort   10.104.104.20   <none>        8000:30013/TCP   1m
 ```
 - --port=8000: The service exposes port 8000 to clients. <br>
 - --target-port=80: The service forwards traffic from port 8000 to port 80 inside the NGINX pod.<br>
