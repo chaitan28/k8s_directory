@@ -148,3 +148,4 @@ kubectl get svc nginx-service
 ```
 - --port=8000: The service exposes port 8000 to clients. <br>
 - --target-port=80: The service forwards traffic from port 8000 to port 80 inside the NGINX pod.<br>
+-  Kubernetes will assign one from the default range (30000–32767).

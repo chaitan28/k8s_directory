@@ -5,16 +5,20 @@ metadata:
   labels:
     app: guestbook
     tier: frontend
-spec:                           # modify replicas according to your case
+spec:                           
   replicas: 3
   selector:
     matchLabels:
       tier: frontend
-  template:
+  template:                       #you can copy the metadata from the ReplicaSet's metadata section to the template's metadata, remove the name 
     metadata:
       labels:
         tier: frontend
     spec:
       containers:
-      - name: php-redis
-        image: us-docker.pkg.dev/google-samples/containers/gke/gb-frontend:v5
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+
+
