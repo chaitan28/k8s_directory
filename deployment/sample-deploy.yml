@@ -1,26 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: testapp
   labels:
     app: testapp
+  name: testapp
 spec:
-  replicas: 6
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 0
+  replicas: 3
   selector:
     matchLabels:
       app: testapp
   template:
     metadata:
+      creationTimestamp: null
       labels:
         app: testapp
     spec:
       containers:
-      - image: kiran2361993/kubegame:v2
+      - image: kiran2361993/kubegame:v1
         name: kubegame
         ports:
          - containerPort: 80

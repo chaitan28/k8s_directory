@@ -10,7 +10,7 @@ Deployments are used by 99.99% of people to deploy their applications. They incl
 - Self-healing: Automatically replace failed or unhealthy Pods.  <br>
 
 ### DaemonSets
-DaemonSets ensure that a pod is run on each node in the cluster. This is typically used for log collection and monitoring.
+DaemonSets ensure that a pod is run on each node in the cluster. This is typically used for log collection and monitoring. <br>
 
 ### StatefulSets
 StatefulSets maintain the identity of pods, ensuring the hostname remains the same, which is crucial for stateful applications like MongoDB and MySQL.
@@ -19,7 +19,7 @@ StatefulSets maintain the identity of pods, ensuring the hostname remains the sa
 
 ### Creating a Deployment
 ```sh
-kubectl create deployment testapp --image kiran2361993/kubegame:v1 --replicas 3 --dry-run -o yaml
+kubectl create deployment testapp --image kiran2361993/kubegame:v1 --replicas 6 --dry-run -o yaml
 ```
 
 ### Deploying the Deployment
@@ -30,10 +30,10 @@ kubectl get pods
 
 ### Exposing the Deployment
 ```sh
-kubectl expose deployment testapp --name sv1 --port 8000 --target-port 80 --type NodePort
+kubectl expose deployment testapp --name sv1 --port 80 --target-port 80 --type NodePort
 ```
 ### RollingUpdate in Deployment
-- Rolling updates allow you to update your application without downtime by gradually replacing the old version of your Pods with new ones
+- RollingUpdate Replace the old ReplicaSets by new one using rolling update i.e gradually scale down the old ReplicaSets and scale up the new one.
 
 ### Strategy
 ```sh
@@ -49,5 +49,26 @@ spec:
       maxSurge: 1
 
 ```
+  ### maxSurge      
+    The maximum number of pods that can be scheduled above the desired number of
+    pods. Value can be an absolute number (ex: 5) or a percentage of desired
+    pods (ex: 10%). This can not be 0 if MaxUnavailable is 0. Absolute number is
+    calculated from percentage by rounding up. Defaults to 25%. Example: when
+    this is set to 30%, the new ReplicaSet can be scaled up immediately when the
+    rolling update starts, such that the total number of old and new pods do not
+    exceed 130% of desired pods. Once old pods have been killed, new ReplicaSet
+    can be scaled up further, ensuring that total number of pods running at any
+    time during the update is at most 130% of desired pods.
+
+  ### maxUnavailable    
+    The maximum number of pods that can be unavailable during the update. Value
+    can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%).
+    Absolute number is calculated from percentage by rounding down. This cannot
+    be 0 if MaxSurge is 0. Defaults to 25%. Example: when this is set to 30%,
+    the old ReplicaSet can be scaled down to 70% of desired pods immediately
+    when the rolling update starts. Once new pods are ready, old ReplicaSet can
+    be scaled down further, followed by scaling up the new ReplicaSet, ensuring
+    that the total number of pods available at all times during the update is at
+    least 70% of desired pods.
 
 
