@@ -23,3 +23,15 @@ spec:
         image: nginx
         ports:
         - containerPort: 80
+      - name: alpine-container 
+        image: alpine:latest 
+        command: ["/bin/sh"] 
+        args: ["-c", "while true; do echo hello; sleep 10; done"]
+        ports:
+        - containerPort: 8081
+      - name: sidecar-container 
+        image: busybox:latest 
+        command: ["/bin/sh"] 
+        args: ["-c", "while true; do echo world; sleep 10; done"]
+        ports:
+        - containerPort: 8082
