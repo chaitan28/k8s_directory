@@ -1,17 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: testapp
   labels:
     app: testapp
-  name: testapp
 spec:
-  replicas: 8
+  minReadySeconds: 10
+  replicas: 6
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 0
   selector:
     matchLabels:
       app: testapp
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: testapp
     spec:

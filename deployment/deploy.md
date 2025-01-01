@@ -37,7 +37,7 @@ kubectl expose deployment testapp --name sv1 --port 80 --target-port 80 --type N
 
 ### Strategy
 ```sh
-kubectl explain deployment.spec.strategy
+kubectl explain deployment.spec.strategy.rollingUpdate
 ```
 Under spec:
 ```yaml
@@ -71,4 +71,26 @@ spec:
     that the total number of pods available at all times during the update is at
     least 70% of desired pods.
 
+### Rollout commands
+```sh
+kubectl rollout status deployment/<deployment-name>
+Example: kubectl rollout status deployment/testapp
+```
+
+```sh
+kubectl rollout history deployment/<deployment-name>
+Example: kubectl rollout history deployment/testapp
+```
+
+```sh
+kubectl rollout undo deployment/<deployment-name>
+Example: kubectl rollout undo deployment/testapp   #rollout to previous version
+```
+
+```sh
+kubectl rollout history deployment/<deployment-name>
+Example: kubectl rollout history deployment/testapp
+kubectl rollout undo deployment/<deployment-name> --to-revision=<revision>     #rollout to specific revision 
+kubectl rollout undo deployment/testapp --to-revision=1
+```
 

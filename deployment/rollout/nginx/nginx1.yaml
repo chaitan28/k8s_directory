@@ -1,12 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: testapp
-  labels:
-    app: testapp
+  name: nginx-deployment
 spec:
   minReadySeconds: 10
-  replicas: 8
+  replicas: 4
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -14,14 +12,14 @@ spec:
       maxUnavailable: 0
   selector:
     matchLabels:
-      app: testapp
+      app: nginx
   template:
     metadata:
       labels:
-        app: testapp
+        app: nginx
     spec:
       containers:
-      - image: kiran2361993/kubegame:v2
-        name: kubegame
+      - name: nginx
+        image: nginx
         ports:
-         - containerPort: 80
+        - containerPort: 80
