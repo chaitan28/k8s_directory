@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: my-daemonset
+  labels:
+    app: my-daemonset
+spec:
+  selector:
+    matchLabels:
+      app: my-daemonset
+  template:
+    metadata:
+      labels:
+        app: my-daemonset
+    spec:
+      containers:
+      - name: my-container
+        image: busybox:latest                  # daemonset will create a pod in each node.
+        command: ["/bin/sh"]
+        args: ["-c", "while true; do echo Hello from the DaemonSet; sleep 10; done"]
