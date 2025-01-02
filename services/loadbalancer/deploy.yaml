@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: testapp-loadbalancer
+  labels:
+    app: testapp    
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: testapp
+  template:
+    metadata:
+      labels:
+        app: testapp
+    spec:
+      containers:
+      - image: kiran2361993/kubegame:v1
+        name: kubegame
+        ports:
+         - containerPort: 80
