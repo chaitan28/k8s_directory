@@ -5,15 +5,15 @@
 
 #### Explanation
 
-**ClusterIP**: A service that is accessible only within the Kubernetes cluster.
+**ClusterIP**: A service that is accessible only within the Kubernetes cluster.  For example: If I wanted to access the service inside the cluster(from master or any worker node) than both are accessible. communication between the front-end(Login signup Module) and back-end (DB)components of your app <br>
 
-**NodePort**: Exposes the service on each Node’s IP at a static port (the NodePort). This is primarily used for development purposes.
+**NodePort**: NodePort service is an extension of ClusterIP service. NodePort service will route the traffic to cluster ip services by default. Exposes the service on each Node’s IP at a static port (the NodePort). Node port must be in the range of 30000–32767. This is primarily used for development purposes.   <br>
 
-**LoadBalancer**: Exposes the service externally using a cloud provider’s load balancer.
+**LoadBalancer**: LoadBalancer service is an extension of NodePort service. Exposes the service externally using a cloud provider’s load balancer. <br>
 
-**ExternalName**: Maps a service to a DNS name, simplifying the configuration and updates of external resources.
+**ExternalName**: Maps a service to a DNS name, simplifying the configuration and updates of external resources. Maps a service to a predefined externalName field by returning a value for the CNAME record.<br>
 
-**Headless Service**: Used primarily for stateful applications (like databases) where you need direct access to individual pods.
+**Headless Service**: Used primarily for stateful applications (like databases) where you need direct access to individual pods. <br>
 
 ---
 
