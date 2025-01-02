@@ -9,8 +9,10 @@
 
 **NodePort**: NodePort service is an extension of ClusterIP service. NodePort service will route the traffic to cluster ip services by default. Exposes the service on each Node’s IP at a static port (the NodePort). Node port must be in the range of 30000–32767. This is primarily used for development purposes.   <br>
 
-**LoadBalancer**: LoadBalancer service is an extension of NodePort service. Exposes the service externally using a cloud provider’s load balancer. <br>
+**LoadBalancer**: LoadBalancer service is an extension of NodePort service. Exposes the service externally using a cloud provider’s load balancer. cloud provider deploys network loadbalancer on the console. <br>
+
 ![loadbalancer](loadbalancer.jpg)
+
 **ExternalName**: Maps a service to a DNS name, simplifying the configuration and updates of external resources
 Example: Product manager asks to integrate gDB which consists of generic data which are accessed by many apps. Data consists of reviews, customer feedback, etc in ECommerce website. Maps a service to a predefined externalName field by returning a value for the CNAME record.<br>
 
