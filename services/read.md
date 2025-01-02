@@ -5,7 +5,7 @@
 
 #### Explanation
 
-**ClusterIP**: A service that is accessible only within the Kubernetes cluster.  For example: If I wanted to access the service inside the cluster(from master or any worker node) than both are accessible. communication between the front-end(Login signup Module) and back-end (DB)components of your app <br>
+**ClusterIP**: A service that is accessible only within the Kubernetes cluster.  For example: If I wanted to access the service inside the cluster(from master or any worker node) than both are accessible. communication between the front-end(Login signup Module) and back-end (DB)components of your app. ClusterIP will do the loadbalancing also. <br>
 
 **NodePort**: NodePort service is an extension of ClusterIP service. NodePort service will route the traffic to cluster ip services by default. Exposes the service on each Node’s IP at a static port (the NodePort). Node port must be in the range of 30000–32767. This is primarily used for development purposes.   <br>
 
@@ -30,9 +30,13 @@ Example: Product manager asks to integrate gDB which consists of generic data wh
 
 2. Login to the troubleshoot pod and run the following commands:
    ```sh
-   nslookup app1
-   curl http://app1
-   while true; do curl -sL http://app1 | grep -i 'IP A'; sleep 1; done
+   nslookup testappclusterip-service
+   curl http://testappclusterip-service
+   while true
+    > do  
+    > curl -sL http://testappclusterip-service 
+    > sleep 1
+    > done
    ```
 
 3. Describe the service:
