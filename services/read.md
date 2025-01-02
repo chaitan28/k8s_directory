@@ -50,7 +50,11 @@ Example: Product manager asks to integrate gDB which consists of generic data wh
    ```sh
    kubectl get ep -o yaml
    ```
+6.  Login into the pod
+```sh
+kubectl exec -it <pod-name> -- /bin/bash
 
+```
 **NodePort**
 
 1. Expose the deployment with a NodePort service and check load balancing:

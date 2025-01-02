@@ -1,11 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: testapp-clusterip
   labels:
     app: testapp
-    name: testapp
+    
 spec:
-  replicas: 8
+  replicas: 4
   selector:
     matchLabels:
       app: testapp

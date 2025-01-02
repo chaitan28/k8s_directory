@@ -110,6 +110,11 @@ rm -rf kubectx_v0.9.5_linux_x86_64.tar.gz
   kubectl get pods
   kubectl get pods -n dev
   ```
+- Login into the pod
+```sh
+kubectl exec -it <pod-name> -- /bin/bash
+
+```
 - Expose a pod:
 ```sh
 kubectl get svc

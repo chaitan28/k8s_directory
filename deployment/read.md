@@ -27,7 +27,11 @@ kubectl create deployment testapp --image kiran2361993/kubegame:v1 --replicas 6 
 kubectl apply -f deployment.yaml
 kubectl get pods
 ```
+### Login into the pod
+```sh
+kubectl exec -it <pod-name> -- /bin/bash
 
+```
 ### Exposing the Deployment
 ```sh
 kubectl expose deployment testapp --name sv1 --port 80 --target-port 80 --type NodePort
