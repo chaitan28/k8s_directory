@@ -12,7 +12,7 @@
 **LoadBalancer**: LoadBalancer service is an extension of NodePort service. Exposes the service externally using a cloud provider’s load balancer. <br>
 
 **ExternalName**: Maps a service to a DNS name, simplifying the configuration and updates of external resources
-Example: Product manager asks to integrate DB which consists of generic data which is visible all users such as , reviews, customer feedback, etc in ECommerce website. Maps a service to a predefined externalName field by returning a value for the CNAME record.<br>
+Example: Product manager asks to integrate gDB which consists of generic data which are accessed by many apps. Data consists of reviews, customer feedback, etc in ECommerce website. Maps a service to a predefined externalName field by returning a value for the CNAME record.<br>
 
 **Headless Service**: Used primarily for stateful applications (like databases) where you need direct access to individual pods. <br>
 
