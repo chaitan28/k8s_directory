@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: testapp
+    name: testapp
+spec:
+  replicas: 8
+  selector:
+    matchLabels:
+      app: testapp
+  template:
+    metadata:
+      labels:
+        app: testapp
+    spec:
+      containers:
+      - image: kiran2361993/kubegame:v1
+        name: kubegame
+        ports:
+         - containerPort: 80
