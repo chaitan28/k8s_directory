@@ -25,6 +25,18 @@ If you need to expose the service of type loadbalancer, you need one NLB for eac
 - You define an Ingress resource with rules and routes.<br>
 - The controller monitors these resources and configures the underlying system (like NGINX or Traefik) to manage traffic.<br>
 
+### A Record
+- **Purpose:** Maps a domain name to an IP address (IPv4). 
+- **Usage:** Directs traffic to a specific IP address. Essential for the basic functioning of websites and services.
+
+### TXT Record
+-**Purpose:** Stores text data for various purposes.
+-**Usage:** Commonly used for domain verification, email security protocols like SPF, DKIM, and DMARC.
+
+### CNAME Record
+- **Purpose:** Aliases one domain to another.
+- **Usage:** Useful for pointing multiple subdomains to a single domain without having to manage multiple A records.
+
 ## Kubernetes Ingress Controllers Setup
 
 This guide will help you set up Ingress Controllers, generate SSL keys, deploy Ingress Controllers, and manage Docker images in a Kubernetes cluster. We'll also create secrets and configure Route 53 records.
