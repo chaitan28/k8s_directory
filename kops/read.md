@@ -43,6 +43,7 @@ kops create cluster --name=www.whytebatl.com \
 ```bash
 kops create -f cluster.yaml  
 kops update cluster --name  www.whytebatl.com --yes --admin
+kops rolling-update cluster                                         #update the cluster
 kops validate cluster --wait 10m
 kops delete -f cluster.yaml  --yes
 kubectl get nodes -o wide 
