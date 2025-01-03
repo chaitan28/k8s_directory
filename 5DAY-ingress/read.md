@@ -75,6 +75,9 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/cont
       ```
 
 3. **Download Voting Images from Docker and Create a Private Container Registry on AWS**
+```sh
+docker pull kiran2361993/testing:latestappresults
+```
     - Attach an IAM role to your instance with necessary permissions.
     - Tag and push the images to your private registry. After pushing, remove all local images:
       ```sh

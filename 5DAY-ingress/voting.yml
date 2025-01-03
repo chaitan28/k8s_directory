@@ -1,0 +1,233 @@
+# Redis Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis                      # Corrected: Resource name specified here
+  labels:
+    app: redis
+spec:
+  clusterIP: None                  # Enables headless service
+  ports:
+  - name: redis-service
+    port: 6379
+    targetPort: 6379
+  selector:
+    app: redis
+---
+# Redis Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis                      # Deployment resource name
+  labels:
+    app: redis
+spec:
+  replicas: 1                      # Number of pod replicas
+  selector:
+    matchLabels:
+      app: redis                   # Must match the pod labels below
+  template:
+    metadata:
+      labels:
+        app: redis                 # Labels for the pods
+    spec:
+      containers:
+      - name: redis
+        image: redis:alpine        # Redis image
+        ports:
+        - containerPort: 6379      # Redis port
+          name: redis
+
+
+# db
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+  labels:
+    app: db
+spec:
+  clusterIP: None
+  ports:
+  - name: db
+    port: 5432
+    targetPort: 5432
+  selector:
+    app: db
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db
+  labels:
+    app: db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      containers:
+      - name: db
+        image: postgres:9.4
+        env:
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata
+        - name: POSTGRES_USER
+          value: postgres
+        - name: POSTGRES_PASSWORD
+          value: postgres
+        ports:
+        - containerPort: 5432
+          name: db
+        volumeMounts:
+        - name: db-data
+          mountPath: /var/lib/postgresql/data
+      volumes:
+      - name: db-data
+        emptyDir: {}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pv-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+
+# result
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: result
+  labels:
+    app: result
+spec:
+  #type: LoadBalancer
+  ports:
+  - port: 8001
+    targetPort: 8000
+    name: result-service
+  selector:
+    app: result
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: result
+  labels:
+    app: result
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: result
+  template:
+    metadata:
+      labels:
+        app: result
+    spec:
+      containers:
+      - name: results
+        image: chaitan28/votingapp:results
+        ports:
+        - name: result
+          containerPort: 8000
+      imagePullSecrets:
+      - name: docker-pwds
+
+# vote
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vote
+  labels:
+    apps: vote
+spec:
+  #type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 80
+      name: vote-service
+  selector:
+    app: vote
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vote
+  labels:
+    app: vote
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vote
+  template:
+    metadata:
+      labels:
+        app: vote
+    spec:
+      containers:
+      - name: appvote
+        image: chaitan28/votingapp:appvote
+        ports:
+        - name: vote
+          containerPort: 80
+      imagePullSecrets:
+      - name: docker-pwds
+
+# worker
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: worker
+  labels:
+    app: worker
+spec:
+  #type: LoadBalancer
+  ports:
+  - port: 8004
+    targetPort: 8003
+    name: worker-service
+  selector:
+    app: worker
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker
+  labels:
+    app: worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: worker
+  template:
+    metadata:
+      labels:
+        app: worker
+    spec:
+      containers:
+      - name: appworker
+        image: chaitan28/votingapp:appworker
+        ports:
+         - name: worker
+           containerPort: 8003
+      imagePullSecrets:
+       - name: docker-pwds
