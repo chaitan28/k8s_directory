@@ -107,12 +107,12 @@ rm -rf kubectx_v0.9.5_linux_x86_64.tar.gz
   ```
 - List pods:
   ```sh
-  kubectl get pods
+  $ kubectl get pods
   NAME                                         READY     STATUS      RESTARTS    AGE
   ingress-nginx-controller-7d67b4775b-vpz6b    1/1       Running      0          2m13s
   READY 0/1: This means that the pod has one container, but it is not yet running or ready.
   READY 1/1: This means that the pod has two containers, and both containers are running and ready.
-  kubectl get pods -n dev
+  $ kubectl get pods -n dev
   ```
 - Login into the pod
 ```sh
