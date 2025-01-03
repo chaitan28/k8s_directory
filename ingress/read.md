@@ -1,8 +1,31 @@
 ![Ingress](ingress.jpg)
 
+## INGRESS CONTROLLER
+### WHY INGRESS CONTROLLER? <br>
+If you need to expose the service of type loadbalancer, you need one NLB for each service . <br>
+ This becomes repeated task to configure and not cost effective. Ingress controller is a solution to this problem. <br>
 
+### Key Features:
+- **Routing:** Directs external HTTP/S traffic to specific services based on URL paths or hostnames.<br>
+- **TLS/SSL:** Handles SSL termination for secure communication.<br>
+- **Load Balancing:** Distributes incoming traffic among multiple backend pods.<br>
+- **Rewrite Rules:** Supports modifying URLs or headers for backend services.<br>
+- **Authentication:** Integrates with external authentication systems.<br>
 
-# Kubernetes Ingress Controllers Setup
+### Popular Ingress Controllers:
+- **NGINX Ingress Controller:**  Most widely used, supports advanced features and is production-ready.<br>
+- **Traefik:** Lightweight and provides dynamic configuration.<br>
+- **HAProxy Ingress:** High performance and reliability for enterprise use cases.<br>
+- **Istio Gateway:**  Part of the Istio service mesh.<br>
+- **AWS ALB Ingress Controller:** Integrates with AWS Application Load Balancer.<br>
+- **GKE Ingress:**  Native for Google Kubernetes Engine.<br>
+
+### How It Works:
+- You deploy an Ingress Controller in the cluster (as a pod or daemon).<br>
+- You define an Ingress resource with rules and routes.<br>
+- The controller monitors these resources and configures the underlying system (like NGINX or Traefik) to manage traffic.<br>
+
+#### Kubernetes Ingress Controllers Setup
 
 This guide will help you set up Ingress Controllers, generate SSL keys, deploy Ingress Controllers, and manage Docker images in a Kubernetes cluster. We'll also create secrets and configure Route 53 records.
 
