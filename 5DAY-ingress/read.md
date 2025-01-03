@@ -32,8 +32,8 @@ If you need to expose the service of type loadbalancer, you need one NLB for eac
 - **Usage:** Directs traffic to a specific IP address. Essential for the basic functioning of websites and services.
 
 ### TXT Record
--**Purpose:** Stores text data for various purposes.
--**Usage:** Commonly used for domain verification, email security protocols like SPF, DKIM, and DMARC.
+- **Purpose:** Stores text data for various purposes.
+- **Usage:** Commonly used for domain verification, email security protocols like SPF, DKIM, and DMARC.
 
 ### CNAME Record
 - **Purpose:** Aliases one domain to another.
