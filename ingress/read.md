@@ -25,7 +25,7 @@ If you need to expose the service of type loadbalancer, you need one NLB for eac
 - You define an Ingress resource with rules and routes.<br>
 - The controller monitors these resources and configures the underlying system (like NGINX or Traefik) to manage traffic.<br>
 
-#### Kubernetes Ingress Controllers Setup
+## Kubernetes Ingress Controllers Setup
 
 This guide will help you set up Ingress Controllers, generate SSL keys, deploy Ingress Controllers, and manage Docker images in a Kubernetes cluster. We'll also create secrets and configure Route 53 records.
 
