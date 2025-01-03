@@ -42,7 +42,9 @@ If you need to expose the service of type loadbalancer, you need one NLB for eac
 ## Kubernetes Ingress Controllers Setup
 
 This guide will help you set up Ingress Controllers, generate SSL keys, deploy Ingress Controllers, and manage Docker images in a Kubernetes cluster. We'll also create secrets and configure Route 53 records.
-
+```sh
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.3.1/deploy/static/provider/aws/deploy.yaml
+```
 ## Ingress Controllers
 
 ### Steps to Follow:

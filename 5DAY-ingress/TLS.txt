@@ -6,7 +6,7 @@ $  sudo apt install certbot  #This service will use port 80 keep another service
 $ certbot certonly --manual --preferred-challenges=dns --key-type rsa \
 --email chaitanyancd@gmail.com \
 --server https://acme-v02.api.letsencrypt.org/directory \
--d *www.whytebatl.com
+-d *.whytebatl.com
 
 ### COPY THE OUTPUT TO Route53 :
 Please deploy a DNS TXT record under the name:
