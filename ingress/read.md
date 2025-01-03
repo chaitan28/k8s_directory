@@ -1,4 +1,4 @@
-![Ingress](ingress/ingress.jpg)
+![Ingress](ingress.jpg)
 
 
 
