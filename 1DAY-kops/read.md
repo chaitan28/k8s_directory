@@ -48,6 +48,9 @@ kubectl get po -o wide
 kubectl cluster-info
 kubectl get ns
 kubectl get po -o wide -n kube-system
+curl -k https://api.whytebatl.com:6443
+kubectl config view --minify
+
 ```
 
 ### Run kubectl commands as default user(ubuntu)
