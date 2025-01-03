@@ -25,6 +25,8 @@ If you need to expose the service of type loadbalancer, you need one NLB for eac
 - You define an Ingress resource with rules and routes.<br>
 - The controller monitors these resources and configures the underlying system (like NGINX or Traefik) to manage traffic.<br>
 
+## DNS RECORDS
+
 ### A Record
 - **Purpose:** Maps a domain name to an IP address (IPv4). 
 - **Usage:** Directs traffic to a specific IP address. Essential for the basic functioning of websites and services.
