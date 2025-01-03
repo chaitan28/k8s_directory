@@ -1,0 +1,18 @@
+1. create a ubuntu server with t2.micre
+2. install the necessary packages:
+
+$ sudo apt update
+$  sudo apt install certbot  #This service will use port 80 keep another services shutdown running on 80 port
+$ certbot certonly --manual --preferred-challenges=dns --key-type rsa \
+--email chaitanyancd@gmail.com \
+--server https://acme-v02.api.letsencrypt.org/directory \
+-d *www.whytebatl.com
+
+### COPY THE OUTPUT TO Route53 :
+Please deploy a DNS TXT record under the name:
+_acme-challenge.whytebatl.com.
+
+with the following value:
+JfDP9EDY9TORolmhZDHSp-Rvb2j3nBmF2v7_DdxNan4 
+
+ENTER

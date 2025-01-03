@@ -19,10 +19,10 @@ mv kops-linux-amd64  kops
 kops version
 ```
 ### nano ~/.bashrc
-export NAME=www.whytebatl.com<br>
-export KOPS_STATE_STORE=s3://www.whytebatl.com<br>
+export NAME=whytebatl.com<br>
+export KOPS_STATE_STORE=s3://whytebatl.com<br>
 export AWS_REGION=us-east-1<br>
-export CLUSTER_NAME=www.whytebatl.com<br>
+export CLUSTER_NAME=whytebatl.com<br>
 export EDITOR='/usr/bin/nano'<br>
 If using nano, press CTRL+O, then Enter to save. Press CTRL+X to exit the editor <br>
 After copying the above files to .bashrc run “ source ~/.bashrc ” <br>
@@ -30,22 +30,17 @@ After copying the above files to .bashrc run “ source ~/.bashrc ” <br>
 ### Create a Cluster using Kops and generate a cluster file and save it carefully and do neccessary changes
 ```bash
 
-kops create cluster --name=www.whytebatl.com \ 
---state=s3://www.whytebatl.com --zones=us-east-1a,us-east-1b \
---node-count=2 --control-plane-count=1 --node-size=t3.medium --control-plane-size=t3.medium \
---control-plane-zones=us-east-1a --control-plane-volume-size 10 --node-volume-size 10 \
---ssh-public-key ~/.ssh/custom.pub \
---dns-zone=www.whytebatl.com  --dry-run --output yaml
-
+kops create cluster --name=whytebatl.com --state=s3://whytebatl.com  --zones=us-east-1a,us-east-1b --node-count=2 --control-plane-count=1 --node-size=t2.medium --control-plane-size=t2.medium --control-plane-zones=us-east-1a --control-plane-volume-size 10 --node-volume-size 10 
+--ssh-public-key ~/.ssh/custom.pub --dns-zone=whytebatl.com  --dry-run --output yaml > cluster.yml
 ```
 
 ####  One done run below commands to create the cluster 
 ```bash
-kops create -f cluster.yaml  
-kops update cluster --name  www.whytebatl.com --yes --admin
+kops create -f cluster.yml  
+kops update cluster --name  whytebatl.com --yes --admin
 kops rolling-update cluster                                         #update the cluster
 kops validate cluster --wait 10m
-kops delete -f cluster.yaml  --yes
+kops delete -f cluster.yml  --yes
 kubectl get nodes -o wide 
 kubectl get no -o wide 
 kubectl get pod -o wide 
