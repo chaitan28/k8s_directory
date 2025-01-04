@@ -114,8 +114,8 @@ metadata:
 spec:
   #type: LoadBalancer
   ports:
-  - port: 8001
-    targetPort: 8000
+  - port: 80
+    targetPort: 80
     name: result-service
   selector:
     app: result
@@ -141,7 +141,7 @@ spec:
         image: chaitan28/votingapp:results
         ports:
         - name: result
-          containerPort: 8000
+          containerPort: 80
       imagePullSecrets:
       - name: docker-pwds
 
@@ -190,44 +190,44 @@ spec:
       - name: docker-pwds
 
 # worker
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: worker
-  labels:
-    app: worker
-spec:
-  #type: LoadBalancer
-  ports:
-  - port: 8004
-    targetPort: 8003
-    name: worker-service
-  selector:
-    app: worker
-
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: worker
-  labels:
-    app: worker
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
+--- 
+  apiVersion: v1
+  kind: Service
+  metadata: 
+    name: worker
+    labels: 
+      app: worker    
+  spec: 
+    clusterIP: None
+    ports:
+        - port: 80
+          targetPort: 80
+          name: worker-service
+    selector: 
       app: worker
-  template:
-    metadata:
-      labels:
+  
+---
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata: 
+    name: worker
+    labels: 
+      app: worker  
+  spec: 
+    replicas: 1
+    selector:
+      matchLabels:
         app: worker
-    spec:
-      containers:
-      - name: appworker
-        image: chaitan28/votingapp:appworker
-        ports:
-         - name: worker
-           containerPort: 8003
-      imagePullSecrets:
-       - name: docker-pwds
+    template: 
+      metadata: 
+        labels: 
+          app: worker
+      spec: 
+        containers: 
+        - image: chaitan28/votingapp:appworker
+          name: worker
+          ports:
+            - name: worker
+              containerPort: 80
+        imagePullSecrets:
+        - name: docker-pwds
