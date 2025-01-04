@@ -112,9 +112,9 @@ metadata:
   labels:
     app: result
 spec:
-  #type: LoadBalancer
+  type: LoadBalancer
   ports:
-  - port: 80
+  - port: 8002
     targetPort: 80
     name: result-service
   selector:
@@ -154,9 +154,9 @@ metadata:
   labels:
     apps: vote
 spec:
-  #type: LoadBalancer
+  type: LoadBalancer
   ports:
-    - port: 80
+    - port: 8001
       targetPort: 80
       name: vote-service
   selector:
@@ -199,10 +199,6 @@ spec:
       app: worker    
   spec: 
     clusterIP: None
-    ports:
-        - port: 80
-          targetPort: 80
-          name: worker-service
     selector: 
       app: worker
   
@@ -226,8 +222,5 @@ spec:
         containers: 
         - image: chaitan28/votingapp:appworker
           name: worker
-          ports:
-            - name: worker
-              containerPort: 80
         imagePullSecrets:
         - name: docker-pwds
