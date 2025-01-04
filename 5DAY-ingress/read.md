@@ -95,7 +95,7 @@ docker pull kiran2361993/testing:latestappresults
       ```
     - Create the necessary secrets:
       ```sh
-      kubectl create secret docker-registry docker-pwd --docker-username=<your-username> --docker-password=<your-password> --docker-email=<your-email>
+      kubectl create secret docker-registry docker-pwds --docker-username=chaitan28 --docker-password=dckr_pat_1w2TmdSW5i50cKROOeFzVGP1S0Q --docker-email=chaitanyancd@gmail.com
       ```
 
 6. **Update YAML Manifest**
