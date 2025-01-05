@@ -1,8 +1,5 @@
 
 # Kubernetes Probes: Readiness and Liveness
-=====================================
-
-## How to Implement Probes
 
 ### Readiness Probe
 
