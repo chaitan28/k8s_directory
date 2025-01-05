@@ -3,7 +3,7 @@
 ## INGRESS CONTROLLER
 ### WHY INGRESS CONTROLLER? <br>
 If you need to expose the service of type loadbalancer, you need one NLB for each service . <br>
- This becomes repeated task to configure and not cost effective. Ingress controller is a solution to this problem. <br>
+ This becomes repeated task to configure NLB each and everytime for the single service and not cost effective. Ingress controller is a solution to this problem. <br>
 
 ### Key Features:
 - **Routing:** Directs external HTTP/S traffic to specific services based on URL paths or hostnames.<br>

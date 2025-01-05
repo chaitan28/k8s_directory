@@ -21,7 +21,7 @@ spec:
           service:
             name: result
             port:
-              number: 8002
+              number: 80
 
 ---
 
@@ -48,7 +48,7 @@ spec:
           service:
             name: vote
             port:
-              number: 8001
+              number: 80
   - host: www.whytebatl.com
     http: 
       paths:
@@ -58,5 +58,5 @@ spec:
           service:
             name: vote
             port:
-              number: 8001
+              number: 80
 

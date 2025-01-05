@@ -108,18 +108,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: result
+  name: result-service
   labels:
     app: result
-  annotations:
-    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
-    service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enable: "true"
-    service.beta.kubernetes.io/aws-load-balancer-connection-draining-enable: "true"
-    service.beta.kubernetes.io/aws-load-balancer-connection-draining-timeout: "30"
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
-  - port: 8002
+  - port: 80
     targetPort: 80
     name: result-service
   selector:
@@ -142,31 +137,26 @@ spec:
         app: result
     spec:
       containers:
-      - name: results
+      - name: result
         image: chaitan28/votingapp:results
         ports:
         - name: result
           containerPort: 80
       imagePullSecrets:
-      - name: docker-pwds
+      - name: docker-pwd
 
 # vote
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: vote
+  name: vote-service
   labels:
     apps: vote
-  annotations:
-    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
-    service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enable: "true"
-    service.beta.kubernetes.io/aws-load-balancer-connection-draining-enable: "true"
-    service.beta.kubernetes.io/aws-load-balancer-connection-draining-timeout: "30"
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
-    - port: 8001
+    - port: 80
       targetPort: 80
       name: vote-service
   selector:
@@ -197,7 +187,7 @@ spec:
         - name: vote
           containerPort: 80
       imagePullSecrets:
-      - name: docker-pwds
+      - name: docker-pwd
 
 # worker
 --- 
@@ -233,4 +223,4 @@ spec:
         - image: chaitan28/votingapp:appworker
           name: worker
         imagePullSecrets:
-        - name: docker-pwds
+        - name: docker-pwd
