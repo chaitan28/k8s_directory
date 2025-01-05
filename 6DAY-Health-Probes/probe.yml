@@ -25,7 +25,7 @@ spec:
           periodSeconds: 10
         livenessProbe:
           httpGet:
-            path: /live
+            path: /index.html
             port: 80
-          initialDelaySeconds: 3
+          initialDelaySeconds: 5
           periodSeconds: 5
