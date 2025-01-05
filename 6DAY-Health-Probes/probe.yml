@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: testapp-lb
+  labels:
+    app: testapp    
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: testapp
+  template:
+    metadata:
+      labels:
+        app: testapp
+    spec:
+      containers:
+      - image: kiran2361993/kubegame:v1
+        name: kubegame
+        readinessProbe:
+          httpGet:
+            path: /index.html                   # default nginx location for /usr/share/nginx/html/index.html
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /live
+            port: 80
+          initialDelaySeconds: 3
+          periodSeconds: 5

@@ -3,7 +3,8 @@
 
 ### Readiness Probe
 
-A Readiness Probe determines if a container is ready to handle requests. If the probe fails, the container is temporarily removed from service. 
+A Readiness Probe determines if a container is ready to handle requests. If the probe fails, the container is temporarily removed from service. From below example, if /healthz is deleted or unavailable in the container, the pod will show running state with unhealthy status. this will not restart the container.
+
 
 **Example:**
 
@@ -32,7 +33,8 @@ In this example:
 
 ### Liveness Probe
 
-A Liveness Probe ensures that your container is running properly. If the probe fails, Kubernetes will restart the container.
+A Liveness Probe ensures that your container is running properly. If the probe fails, Kubernetes will restart the container.From below example, if /healthz is deleted or unavailable in the container, the pod will show running state with unhealthy status. this will restart the container.
+
 
 **Example:**
 
@@ -101,6 +103,9 @@ In this deployment:
 
 - **Readiness Probe** checks if the application is ready to serve traffic by accessing `/ready`.
 - **Liveness Probe** monitors the health of the container through the `/live` endpoint.
+
+
+## ALWAYS Readiness Probe and Liveness Probe are deployed in one deployment file. 
 
 ## Conclusion
 

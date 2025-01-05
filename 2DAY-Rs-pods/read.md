@@ -117,7 +117,7 @@ rm -rf kubectx_v0.9.5_linux_x86_64.tar.gz
 - Login into the pod
 ```sh
 kubectl exec -it <pod-name> -- /bin/bash
-
+kubectl exec -it <pod-name> -- /bin/sh
 ```
 - Expose a pod:
 ```sh
