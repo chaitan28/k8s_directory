@@ -2,7 +2,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: nginx2
-  namespace: development
+  labels:
+    namespace: development
 spec:
   containers:
   - name: nginx
@@ -11,3 +12,8 @@ spec:
       requests:
         cpu: "1"            # 1 CPU core
         memory: "2Gi"       # 2 GiB of memory
+
+
+# my two nodes are running on t3.medium instance  (2 vCPUs and 4 GiB of memory). 
+# 2 vCPUs (for pods, after considering Kubernetes system overhead like kubelet and daemonsets, typically ~90% available).
+# 3.5 GiB memory (after reserving ~10% for system processes).t3.medium can only schedule 1 pod, since 2 pods would exceed the memory limit.
