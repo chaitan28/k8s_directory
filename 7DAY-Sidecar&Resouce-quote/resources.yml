@@ -9,7 +9,7 @@
 # limit --> a Pod defines the limit of CPU resources it will use
 
 ### TOTAL YAML FOR NAMESPACE
-
+--- 
 apiVersion: v1
 kind: Namespace
 metadata:

@@ -74,6 +74,8 @@ A container needing only 25% of a 1core can be allocated 250m(0.25 vCPU).
  kubectl get resourcequota
  kubectl describe resourcequota <resourcequota-name>
  kubectl delete resourcequota <resourcequota-name>
+ kubectl describe ns <development>
+ kubectl delete ns <development
  ```
 
 ## Resources
