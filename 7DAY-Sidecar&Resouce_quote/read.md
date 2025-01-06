@@ -10,23 +10,17 @@ This repository provides a practical demonstration of Kubernetes Sidecar contain
 
 ## Contents
 
-### Sidecar Containers:
+- **Adapter Containers(SIDE CAR CONTAINER)**: Containers that run alongside the main container for purposes such as logging, metrics collection, and proxy services. Demonstration using Istio Envoy Proxy.
 
-- **Adapter Containers(SIDE CAR)**: Containers that run alongside the main container for purposes such as logging, metrics collection, and proxy services.
-
-1. **Sidecar Containers Overview**: Explanation of Sidecar containers, their use cases, and how they complement the main containers.
-   - **Init Containers**: Containers that run before the main container to check dependencies.
-   - **Adapter Containers**: Containers that run alongside the main container for purposes such as logging, metrics collection, and proxy services.
+- **Init Containers**: Containers that run before the Main/App container to check dependencies.
    
 
-2. **Example**:
-   - **Deployment Configuration**: YAML files for deploying a service with Init Containers and Adapter Containers.
-   - **Service Mesh Example**: Demonstration using Istio Envoy Proxy.
 
 ### Resource Quotas
 
 1. **Resource Quotas Overview**: Explanation of how Resource Quotas manage resource usage within namespaces.
-   - **Resource Units**: Mi(Mebibytes), m (millicores), Gi (Gibibyte)
+2. **Resource Limits**:          Setting limits on CPU and memory usage for containers.
+   - **Resource Units**:   Mi(Mebibytes), m (millicores), Gi (Gibibyte)
 ```sh
 1Gi = 1 Gibibytes of RAM
 1Gi = 1000 MB
