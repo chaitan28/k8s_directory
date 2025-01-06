@@ -6,7 +6,7 @@
 # Kubernetes supports 2 CPU quotas:
 # ( One Millicores is 1/1000 of a CPU, therefore 1000m equals 1 CPU. 1000m equals one CPU on all computers. )
 # requests --> a Pod requests an amount of CPU resources
-# limit --> a Pod defines the limit of CPU resources it will use
+# limit --> a Pod defines the limit of CPU resources it can use
 
 ### TOTAL YAML FOR NAMESPACE
 --- 
@@ -16,13 +16,15 @@ metadata:
   name: development
   labels:
     name: development
-    
+
+### Resourcequote is a resource quota object that defines the resource consumption limits for a namespace
 ---
 apiVersion: v1
 kind: ResourceQuota
 metadata:
  name: object-counts
- namespace: development
+ labels:
+    name: development
 spec:
  hard:
    requests.cpu: "1000m"              # least or minimum amount of CPU required
@@ -34,12 +36,15 @@ spec:
    resourcequotas: "10"
    services: "5"
 
+# LimitRange is a policy to constrain resource by Pod or Container in a namespace.
+
 ---
 apiVersion: v1
 kind: LimitRange
 metadata:
   name: cpu-memory-min-max-demo-lr
-  namespace: development
+  labels:
+    name: development
 spec:
   limits:
   - max:

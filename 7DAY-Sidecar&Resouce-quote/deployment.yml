@@ -32,10 +32,10 @@ spec:
   limits:
     - max:
         cpu: "200m"
-        memory: 128Mi
+        memory: "512Mi"
       min:
         cpu: "100m"
-        memory: 100Mi
+        memory: 128Mi
       type: Container
 
 ---
@@ -44,42 +44,31 @@ kind: Deployment
 metadata:
   name: adapter-container-deployment
   labels:
-    env: prod
+    env: dev
 spec:
-  replicas: 1
+  replicas: 4
   selector:
     matchLabels:
-      env: prod
+      env: dev
   template:
     metadata:
       labels:
-        env: prod
+        env: dev
     spec:
       initContainers:
         - name: init-container
           image: alpine/git
           command: ["/bin/sh"]
           args:
-            [
-              "-c",
-              "git clone https://github.com/saikiranpi/Sidecar_Test.git /html",
-            ]
+            ["-c","git clone https://github.com/saikiranpi/Sidecar_Test.git /html"]
         - name: wait-for-service
           image: busybox
           command:
-            [
-              "sh",
-              "-c",
-              "until nslookup myservice.default.svc.cluster.local; do echo waiting for myservice; sleep 2; done",
-            ]
+            ["sh", "-c","until nslookup myservice.default.svc.cluster.local; do echo waiting for myservice; sleep 2; done"]
         - name: perform-task
           image: busybox
           command:
-            [
-              "sh",
-              "-c",
-              'echo "Init container tasks completed" > /tasks/status.txt',
-            ]
+            ["sh", "-c",'echo "Init container tasks completed" > /tasks/status.txt']
           volumeMounts:
             - name: shared-vol
               mountPath: /tasks
@@ -88,10 +77,7 @@ spec:
           image: kiran2361993/kubegame:v1
           command: ["/bin/sh"]
           args:
-            [
-              "-c",
-              "while true; do echo \\<h1\\>$(date)\\</h1\\> >> /html/index.html; sleep 5; done",
-            ]
+            ["-c","while true; do echo \\<h1\\>$(date)\\</h1\\> >> /html/index.html; sleep 5; done"]
           ports:
             - containerPort: 80
           volumeMounts:
@@ -99,11 +85,11 @@ spec:
               mountPath: /html/
           resources:
             requests:
-              cpu: "100m"
-              memory: "256Mi"
+               cpu: "100m"      # Meets the minimum limit for CPU
+               memory: "128Mi"  # Meets the minimum limit for memory
             limits:
-              cpu: "200m"
-              memory: "512Mi"
+               cpu: "200m"      # Meets the maximum limit for CPU
+               memory: "256Mi"  # Within the maximum limit for memory
         - name: main-container
           image: kiran2361993/kubegame:v1
           imagePullPolicy: Always
@@ -114,11 +100,11 @@ spec:
               mountPath: /usr/share/nginx/html/
           resources:
             requests:
-              cpu: "100m"
-              memory: "256Mi"
+             cpu: "150m"      # Between min (100m) and max (200m) for CPU
+             memory: "128Mi"  # Between min (100Mi) and max (256Mi)
             limits:
-              cpu: "200m"
-              memory: "512Mi"
+              cpu: "200m"      # Meets the maximum limit for CPU
+              memory: "256Mi"  # Meets the maximum limit for memory
       volumes:
         - name: shared-vol
           emptyDir: {}
@@ -129,28 +115,28 @@ kind: Service
 metadata:
   name: adapter-container-service
   labels:
-    env: prod
+    env: dev
 spec:
   ports:
     - port: 80
       protocol: TCP
       targetPort: 80
   selector:
-    env: prod
+    env: dev
   type: NodePort
 
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: myservice
-  labels:
-    env: prod
-spec:
-  ports:
-    - port: 80
-      targetPort: 80
-      protocol: TCP
-  selector:
-    env: prod
-  type: NodePort
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: myservice
+#   labels:
+#     env: default
+# spec:
+#   ports:
+#     - port: 80
+#       targetPort: 80
+#       protocol: TCP
+#   selector:
+#     env: dev
+#   type: NodePort

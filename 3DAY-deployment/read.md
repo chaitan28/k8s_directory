@@ -25,6 +25,7 @@ kubectl create deployment testapp --image kiran2361993/kubegame:v1 --replicas 6 
 ### Deploying the Deployment
 ```sh
 kubectl apply -f deployment.yaml
+kubectl scale deployment <deployment-name> --replicas=10
 kubectl get pods
 ```
 ### Login into the pod
