@@ -10,12 +10,14 @@ This repository provides a practical demonstration of Kubernetes Sidecar contain
 
 ## Contents
 
-### Sidecar Containers
+### Sidecar Containers:
+
+- **Adapter Containers(SIDE CAR)**: Containers that run alongside the main container for purposes such as logging, metrics collection, and proxy services.
 
 1. **Sidecar Containers Overview**: Explanation of Sidecar containers, their use cases, and how they complement the main containers.
    - **Init Containers**: Containers that run before the main container to check dependencies.
    - **Adapter Containers**: Containers that run alongside the main container for purposes such as logging, metrics collection, and proxy services.
-   - **Ambassador Containers**: Containers that act as proxies for external resources.
+   
 
 2. **Example**:
    - **Deployment Configuration**: YAML files for deploying a service with Init Containers and Adapter Containers.
@@ -24,7 +26,24 @@ This repository provides a practical demonstration of Kubernetes Sidecar contain
 ### Resource Quotas
 
 1. **Resource Quotas Overview**: Explanation of how Resource Quotas manage resource usage within namespaces.
-   - **Resource Units**: Mi (Mebibyte), m (millicores), Gi (Gibibyte)
+   - **Resource Units**: Mi(Mebibytes), m (millicores), Gi (Gibibyte)
+```sh
+1Gi = 1 Gibibytes of RAM
+1Gi = 1000 MB
+1Gi = 1024 MiB
+```
+```sh 
+For example:
+100m = 0.1 CPU core.
+1000m = 1 full CPU core = 1 vCPU (virtual CPU)
+A container needing only 25% of a 1core can be allocated 250m(0.25 vCPU).
+```
+```sh
+256Mi = 256 Mebibytes of RAM.
+1 Mi = 1.048 MB.
+```
+
+
    - **Example Setup**: Configurations for applying Resource Quotas to namespaces like Development and Staging.
 
 2. **Example**:
@@ -35,7 +54,8 @@ This repository provides a practical demonstration of Kubernetes Sidecar contain
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/sidecar-containers-resource-quota.git
+   https://github.com/chaitan28/k8s_directory.git
+   cd 7DAY-Sidecar&Resouce quote
    ```
 
 2. **Apply Kubernetes Configurations**:
