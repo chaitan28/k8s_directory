@@ -8,129 +8,7 @@
 # requests --> a Pod requests an amount of CPU resources
 # limit --> a Pod defines the limit of CPU resources it will use
 
-
-Basic Quota:
-
-apiVersion: v1
-kind: ResourceQuota
-metadata:
- name: count-quotas
-spec:
- hard:
-   pods: "2"
-######################################
-# apiVersion: v1
-# kind: ResourceQuota
-# metadata:
-#  name: object-counts
-# spec:
-#  hard:
-#    requests.cpu: "1000m"
-#    limits.cpu: "2000m"
-  
-# #######################################
-# More Resources:
-# apiVersion: v1
-# kind: ResourceQuota
-# metadata:
-#  name: quota2
-# spec:
-#  hard:
-#    cpu: "20"
-#    memory: 1Gi
-#    pods: "10"
-#    replicationcontrollers: "20"
-#    resourcequotas: "10"
-#    services: "5"
-#  #############################################
-# apiVersion: v1
-# kind: LimitRange
-# metadata:
-#   name: limit-mem-cpu-per-container
-# spec:
-#   limits:
-#   - max:
-#       cpu: "800m"
-#       memory: "1Gi"
-#     min:
-#       cpu: "100m"
-#       memory: "99Mi"
-#     default:
-#       cpu: "700m"
-#       memory: "900Mi"
-#     defaultRequest:
-#       cpu: "110m"
-#       memory: "111Mi"
-#     type: Container
-# #################################################### 
-
-
-
-# apiVersion: v1
-# kind: LimitRange
-# metadata:
-#  name: limits
-# spec:
-#  limits:
-#  - default:
-#      cpu: 200m
-#      memory: 512Mi
-#    defaultRequest:
-#      cpu: 100m
-#      memory: 256Mi
-#    type: Container
-
-# apiVersion: v1
-# kind: LimitRange
-# metadata:
-#   name: cpu-memory-min-max-demo-lr
-# spec:
-#   limits:
-#   - max:
-#   	cpu: "200m"
-#   	memory: 128Mi
-# 	min:
-#   	cpu: "100m"
-#   	memory: 100Mi
-# 	type: Container
-# #No need to provide default and default values when min and max are given as by default the POD/Container will take max CPU,Memory as default.
-
-# apiVersion: v1
-# kind: Pod
-# metadata:
-#  name: couchbase-pod
-# spec:
-#  containers:
-#  - name: couchbase
-#    image: couchbase
-#    ports:
-#    - containerPort: 8091
-#    resources:
-#      limits:
-#        cpu: "500m"
-#        memory: 256Mi
-    
-    
-# apiVersion: v1
-# kind: Pod
-# metadata:
-#  name: couchbase-pod1
-# spec:
-#  containers:
-#  - name: couchbase
-#    image: couchbase
-#    ports:
-#    - containerPort: 8091
-#    resources:
-#      limits:
-#        cpu: "500m"
-#        memory: 1Gi
-  
-
-
-
-
-TOTAL YAML FOR NAMESPACE:
+### TOTAL YAML FOR NAMESPACE
 
 apiVersion: v1
 kind: Namespace
@@ -147,10 +25,10 @@ metadata:
  namespace: development
 spec:
  hard:
-   requests.cpu: "1000m"
-   limits.cpu: "2000m"
-   requests.memory: 1Gi
-   limits.memory: 2Gi
+   requests.cpu: "1000m"              # least or minimum amount of CPU required
+   limits.cpu: "2000m"                # highest or maximum amount of CPU allowed
+   requests.memory: 1Gi               # least or minimum amount of memory required
+   limits.memory: 2Gi                 # highest or maximum amount of memory allowed
    pods: "10"
    replicationcontrollers: "20"
    resourcequotas: "10"

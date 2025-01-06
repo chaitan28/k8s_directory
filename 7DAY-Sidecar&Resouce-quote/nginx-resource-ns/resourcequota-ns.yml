@@ -6,6 +6,6 @@ metadata:
       namespace: development
 spec:
     hard:
-      cpu: "5"               # 5 vCPU cores
+      cpu: "5"               # 5 CPU cores
       memory: 10Gi           # 10Gi of memory
       pods: "10"             # 10 pods
