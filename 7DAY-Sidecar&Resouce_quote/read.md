@@ -20,7 +20,9 @@ This repository provides a practical demonstration of Kubernetes Sidecar contain
 
 1. **Resource Quotas Overview**: Explanation of how Resource Quotas manage resource usage within namespaces.
 2. **Resource Limits**:          Setting limits on CPU and memory usage for containers.
+
    - **Resource Units**:   Mi(Mebibytes), m (millicores), Gi (Gibibyte)
+
 ```sh
 1Gi = 1 Gibibytes of RAM
 1Gi = 1000 MB
@@ -37,8 +39,6 @@ A container needing only 25% of a 1core can be allocated 250m(0.25 vCPU).
 1 Mi = 1.048 MB.
 ```
 
-
-   - **Example Setup**: Configurations for applying Resource Quotas to namespaces like Development and Staging.
 
 2. **Example**:
    - **Namespace Creation**: YAML files to create namespaces with Resource Quotas.
