@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx1
+  namespace: development
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    resources:
+      requests:
+        cpu: "1"                 # 2 CPU cores
+        memory: "2Gi"            # 4Gi of memory
