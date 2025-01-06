@@ -13,7 +13,7 @@ This repository provides a practical demonstration of Kubernetes Sidecar contain
 - **Adapter Containers(SIDE CAR CONTAINER)**: Containers that run alongside the main container for purposes such as logging, metrics collection, and proxy services. Demonstration using Istio Envoy Proxy.<br>
 **Example:** Setting up configuration, checking for dependencies.<br>
 
-- **Init Containers**: Containers that run before the Main/App container to check dependencies.<br>
+- **Init Containers(initializing)**: Containers that run before the Main/App container to check dependencies.After launching the main container, init container can be deleted.<br>
    **Example:** Logging, monitoring, proxying.
 
 

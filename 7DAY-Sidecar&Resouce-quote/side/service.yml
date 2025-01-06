@@ -1,0 +1,31 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: adapter-container-service
+  labels:
+    env: qa
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    env: qa
+  type: NodePort
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myservice
+  labels:
+    env: qa
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+  selector:
+    env: qa
+  type: NodePort
