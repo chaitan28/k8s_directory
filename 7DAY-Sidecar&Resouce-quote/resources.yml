@@ -6,7 +6,7 @@
 # Kubernetes supports 2 CPU quotas:
 # ( One Millicores is 1/1000 of a CPU, therefore 1000m equals 1 CPU. 1000m equals one CPU on all computers. )
 # requests --> a Pod requests an amount of CPU resources
-# limit --> a Pod defines the limit of CPU resources it can use
+# limit   --> a Pod defines the limit of CPU resources it can use
 
 ### TOTAL YAML FOR NAMESPACE
 --- 

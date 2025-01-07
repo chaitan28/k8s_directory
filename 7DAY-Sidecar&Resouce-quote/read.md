@@ -19,10 +19,10 @@ This repository provides a practical demonstration of Kubernetes Sidecar contain
 
 ### Resource Quotas
 
-1. **Resource Quotas Overview**: Explanation of how Resource Quotas manage resource usage within namespaces.
-2. **Resource Limits**:          Setting limits on CPU and memory usage for containers.
+1. **Resource Quotas Overview**: Explanation of how Resource Quotas manage resource usage within namespaces.<br>
+2. **Resource Limits**:          Setting limits on CPU and memory usage for containers.<br>
 
-   - **Resource Units**:   Mi(Mebibytes), m (millicores), Gi (Gibibyte)
+   - **Resource Units**:  Mi(Mebibytes), m (millicores), Gi (Gibibyte)
 
 ```sh
 1Gi = 1 Gibibytes of RAM
@@ -35,6 +35,7 @@ For example:
 1000m = 1 full CPU core = 1 vCPU (virtual CPU)
 A container needing only 25% of a 1core can be allocated 250m(0.25 vCPU).
 ```
+
 ```sh
 256Mi = 256 Mebibytes of RAM.
 1 Mi = 1.048 MB.
@@ -50,7 +51,7 @@ A container needing only 25% of a 1core can be allocated 250m(0.25 vCPU).
 1. **Clone the Repository**:
    ```bash
    https://github.com/chaitan28/k8s_directory.git
-   cd 7DAY-Sidecar&Resouce quote
+   cd 7DAY-Sidecar&Resouce-quote
    ```
 
 2. **Apply Kubernetes Configurations**:
@@ -60,11 +61,11 @@ A container needing only 25% of a 1core can be allocated 250m(0.25 vCPU).
    ```
 
 3. **Check Logs and Resource Usage**:
-   - View Init container logs:
+   - View Init container logs
      ```bash
      kubectl logs <init-container-pod> -c <init-container-name> -f
      ```
-   - Monitor resource usage and quotas:
+   - Monitor resource usage and quotas
      ```bash
      kubectl describe namespace <namespace-name>
      ```
@@ -83,4 +84,3 @@ A container needing only 25% of a 1core can be allocated 250m(0.25 vCPU).
 - [Kubernetes Documentation on Sidecar Containers](https://kubernetes.io/docs/concepts/workloads/pods/#sidecar-containers)
 - [Kubernetes Documentation on Resource Quotas](https://kubernetes.io/docs/concepts/policy/resource-quotas/)
 
----
