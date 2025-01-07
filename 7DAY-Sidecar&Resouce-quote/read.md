@@ -84,3 +84,4 @@ A container needing only 25% of a 1core can be allocated 250m(0.25 vCPU).
 - [Kubernetes Documentation on Sidecar Containers](https://kubernetes.io/docs/concepts/workloads/pods/#sidecar-containers)
 - [Kubernetes Documentation on Resource Quotas](https://kubernetes.io/docs/concepts/policy/resource-quotas/)
 
+ 
