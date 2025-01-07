@@ -9,7 +9,7 @@ spec:
   - name: myapp-container
     image: busybox:1.28
     command: ['sh', '-c', 'echo The app is running! && sleep 3600']
-  initContainers:                   #At the time of launch time only , init container will start after the initial launch if to delete the myservice the pod will keep on running 
+  initContainers:                   #At the time of launch time only , init container will start, after the initial launch if to delete the myservice the pod will keep on running 
   - name: init-myservice                    
     image: busybox:1.28
     command: ['sh', '-c', "until nslookup myservice.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for myservice; sleep 2; done"]
