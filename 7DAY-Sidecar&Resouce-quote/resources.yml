@@ -55,4 +55,3 @@ spec:
       memory: 100Mi
     type: Container
 
-#---
