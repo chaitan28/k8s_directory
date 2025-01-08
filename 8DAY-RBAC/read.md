@@ -66,21 +66,31 @@ Copy all `user1.crt` and `user1.key` files from the /tmp  to the master root loc
 For User 1:
 
 ```bash
-export KUBECONFIG=/root/USER1-CONFIG
+export KUBECONFIG=/root/config/user1-CONFIG
 ```
 
 For User 2:
 
 ```bash
-export KUBECONFIG=/root/USER2-CONFIG
+export KUBECONFIG=/root/config/user2-CONFIG
 ```
 
 ### 7. Set Up RBAC Roles and Bindings
 
 Create roles and role bindings for the users, including:
 
-- **RoleBindings** for namespace-specific permissions
-- **ClusterRoleBindings** for cluster-wide permissions
+**Role:** Permissions are scoped to a specific namespace.
+**RoleBinding:** Binds a Role to a user/group within a namespace.
+**ClusterRole:** Permissions are scoped across the entire cluster.
+**ClusterRoleBinding:** Binds a ClusterRole to a user/group across all namespaces.
+
+### Roles commands
+```sh
+kubectl get roles --all-namespaces
+kubectl get roles -n <namespace>
+kubectl get rolebindings -n <namespace>
+kubectl get rolebindings --all-namespaces
+```
 
 ### 8. Admin User Configuration
 
