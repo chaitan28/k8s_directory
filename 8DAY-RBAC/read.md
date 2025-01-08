@@ -118,4 +118,5 @@ To combine multiple config files into one:
 ```bash
 export KUBECONFIG=/root/config/user1-CONFIG:/root/config/user2-CONFIG
 kubectl config view --merge --flatten > mixed-config.txt
+export KUBECONFIG=mixed-config.txt
 ```
