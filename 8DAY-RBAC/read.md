@@ -59,7 +59,7 @@ openssl x509 -req -in user2.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out us
 
 ### 5. Copy Certificates and Keys
 
-Copy all `.crt` and `.key` files to the master root location safely.
+Copy all `user1.crt` and `user1.key` files from the /tmp  to the master root location safely.
 
 ### 6. Create Config Files for Users
 
