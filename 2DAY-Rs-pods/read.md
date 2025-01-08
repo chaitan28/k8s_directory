@@ -95,6 +95,7 @@ rm -rf kubectx_v0.9.5_linux_x86_64.tar.gz
 - Create a deployment:
   ```sh
   kubectl run nginx -n dev --image=nginx--dry-run=client -o yaml
+  kubectl create deployment httpd --image=httpd --replicas=3
   ```
 - View available resources:
   ```sh
@@ -158,6 +159,7 @@ metadata:
 ![nodeport](nodeport.jpg)
 ### DETAILS OF NODEPORT 
 ```sh
+kubectl create deployment httpd --image=httpd --replicas=3
 kubectl expose pod nginx1 --type=NodePort --port=8000 --target-port=80 --name=nginx-service
 kubectl get svc nginx-service
  NAME             TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
