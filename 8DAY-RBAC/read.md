@@ -97,7 +97,8 @@ Copy all `.crt` and `.key` files to the master root location safely.
 Create the admin config file:
 
 ```bash
-export KUBECONFIG=/root/user1-CONFIG
+export KUBECONFIG=/root/config/user1-CONFIG
+export -p
 ```
 
 ### 9. Merge Config Files
@@ -105,6 +106,6 @@ export KUBECONFIG=/root/user1-CONFIG
 To combine multiple config files into one:
 
 ```bash
-export KUBECONFIG=USER1-CONFIG:USER2-CONFIG:user1-CONFIG
+export KUBECONFIG=/root/config/user1-CONFIG:/root/config/user2-CONFIG
 kubectl config view --merge --flatten > mixed-config.txt
 ```
