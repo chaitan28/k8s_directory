@@ -19,6 +19,7 @@ mv kops-linux-amd64  kops
 kops version
 ```
 ### nano ~/.bashrc
+- environment variable(export=) is session-specific, meaning it will be lost when the system is rebooted.
 export NAME=whytebatl.com<br>
 export KOPS_STATE_STORE=s3://whytebatl.com<br>
 export AWS_REGION=us-east-1<br>

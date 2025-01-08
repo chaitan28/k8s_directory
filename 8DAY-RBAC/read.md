@@ -75,6 +75,7 @@ For User 2:
 export KUBECONFIG=/root/config/user2-CONFIG
 ```
 
+
 ### 7. Set Up RBAC Roles and Bindings
 
 Create roles and role bindings for the users, including:
@@ -104,6 +105,7 @@ openssl x509 -req -in user1.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out us
 
 Copy all `.crt` and `.key` files to the master root location safely.
 
+
 Create the admin config file:
 
 ```bash
@@ -120,3 +122,14 @@ export KUBECONFIG=/root/config/user1-CONFIG:/root/config/user2-CONFIG
 kubectl config view --merge --flatten > mixed-config.txt
 export KUBECONFIG=mixed-config.txt
 ```
+
+### 10. kubectx 
+- kubectx is a command-line tool that simplifies managing and switching between Kubernetes contexts. It is particularly useful when working with multiple Kubernetes clusters or contexts, allowing you to quickly switch between them without needing to manually edit your KUBECONFIG file.
+ ```sh
+ kubectl get pods -n <namespace> --context <context-name>
+ example: kubectl get po --context=user1-context
+ kubectx <context-name>
+ example: kubectx user1-context
+ ```
+
+  
