@@ -1,0 +1,28 @@
+apiVersion: apps/v1             # Specifies the Kubernetes API version to use for this resource.apps/v1 is the version for managing Deployment resources
+kind: Deployment                # Specifies the type of Kubernetes resource to create.
+metadata:                       # metadata should name, namespace,labels and annotations
+  name: app1                    # Gives the deployment a unique name within the namespace
+  namespace: dev                                 
+  labels:                       # Labels are used for organization and to identify resources, often used in selectors
+    app: app1  
+  annotations:                  # Annotations can be used for various purposes like documentation, logging, or configuration information 
+    description: "Deployment created for app1"
+spec:                            # main spec section should contain only replicas,selector and template.
+  replicas: 4                    # Number of replicas(pods) to deploy
+  selector:                      # under selectors we need copy the label we created in metadata.
+    matchLabels:                 # The matchLabels ensures the deployment manages Pods with the label(app: app1)
+      app: app1
+  template:                     # template section of a Kubernetes Deployment, only metadata and spec are allowed            
+    metadata:                   # Metadata for the Pod ,can be taken from the deployment metadata expect for name
+      labels:                      
+        app: app1
+      annotations: 
+       description: "Pod created by app1 deployment"  
+    spec:                          # Specification for the Pod      
+      containers:                  # containers should have image, name and ports.
+       - image: chaitan28/configmaps:kubegame
+         name: configmaps
+         ports:                      
+          - containerPort: 80
+      imagePullSecrets:              # imagePullSecrets is part of the pod spec, not the container configuration
+        - name: docker-pwds

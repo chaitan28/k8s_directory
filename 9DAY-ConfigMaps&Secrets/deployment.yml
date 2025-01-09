@@ -17,3 +17,5 @@ spec:
       containers:
        - image: chaitan28/configmaps:kubegame
          name: configmaps
+      imagePullSecrets:              # imagePullSecrets is part of the pod spec, not the container configuration
+        - name: docker-pwds

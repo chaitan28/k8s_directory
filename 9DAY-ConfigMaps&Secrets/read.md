@@ -32,14 +32,16 @@ Secrets are used to store sensitive data such as TLS certificates, passwords, an
 4. **Create Deployment and Add Secrets**
 
 ```sh
+kubectl create secret docker-registry docker-pwds --docker-username=chaitan28 --docker-password=dckr_pat_1w2TmdSW5i50cKROOeFzVGP1S0Q --docker-email=chaitanyancd@gmail.com
 
 ```
 ```yaml
-containers: 
-- image: kiran2361993/votingapp:worker
-  name: worker
-imagePullSecrets:
-- name: docker-pwd
+    spec:
+      containers:
+        - image: chaitan28/configmaps:kubegame
+          name: configmaps
+      imagePullSecrets:     # Correct placement of imagePullSecrets
+        - name: docker-pwds
 ```
 
 ### 2. Generic Secrets
@@ -128,5 +130,3 @@ kubectl describe cm default.conf
 kubectl apply -f deployment.yaml
 kubectl expose deployment <deployment_name> --type=LoadBalancer --name=<service_name>
 ```
-
----
