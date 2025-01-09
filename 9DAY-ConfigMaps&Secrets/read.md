@@ -90,24 +90,10 @@ data:
 7. **Login to Container and Run AWS Commands**
 
 ```bash
-kubectl exec -it <pod_name> -- aws s3 ls
+kubectl exec -it <pod_name> -- bin/sh
+aws ec2 describe-instances | jq
 ```
 
-### File Mount
-
-1. **Checkout VSCode**
-2. **Login to Container and Check Environment Variables**
-
-```bash
-kubectl exec -it <pod_name> -- env
-```
-
-3. **Access Stored AWS Keys**
-
-```bash
-cat /root/.aws
-aws ec2 describe-vpcs --region us-east-2
-```
 
 ## ConfigMaps
 
