@@ -94,8 +94,9 @@ rm -rf kubectx_v0.9.5_linux_x86_64.tar.gz
 
 - Create a deployment:
   ```sh
-  kubectl run nginx -n dev --image=nginx--dry-run=client -o yaml
+  kubectl run nginx -n dev --image=nginx --dry-run=client -o yaml
   kubectl create deployment httpd --image=httpd --replicas=3
+  kubectl create deployment app1 --image=chaitan28/configmaps:kubegame --replicas=4 --dry-run=client -o yaml
   ```
 - View available resources:
   ```sh

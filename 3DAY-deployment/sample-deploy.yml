@@ -13,7 +13,7 @@ spec:
     metadata:
       labels:
         app: testapp
-    spec:
+  spec:
       containers:
       - image: kiran2361993/kubegame:v1
         name: kubegame
