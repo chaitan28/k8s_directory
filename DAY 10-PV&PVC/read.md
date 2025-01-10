@@ -15,6 +15,8 @@ This repository provides examples and explanations of different Kubernetes stora
 - **Purpose**: Defines the provisioner and parameters for dynamically provisioning PVs.
 - **Dynamic Provisioning**: Automatically creates PVs based on PVC requests using predefined storage classes.
 
+- **The entire 10Gi PersistentVolume (PV) is bound to your PersistentVolumeClaim (PVC) because Kubernetes does not support partial binding or splitting of a PV across multiple PVCs**
+
 ## Tasks
 
 ### Persistent Volume and Claim
@@ -22,6 +24,7 @@ This repository provides examples and explanations of different Kubernetes stora
 2. Use `kubectl get pv` to view them.
 3. Claims can be static or dynamic:
    - **Static PVC**: Manually create a PV and PVC.
+      **PV(EBS)----> PVC ----> ATTACH TO DEPLOYMENT**
       ```sh
         kubectl get pvc
         kubectl get pv

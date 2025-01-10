@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: ebs-deployment
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: ebs-app
@@ -21,4 +21,4 @@ spec:
       volumes:
       - name: ebs-storage
         persistentVolumeClaim:
-          claimName: ebs-pvc
+          claimName: pvc-claim1

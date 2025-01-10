@@ -1,13 +1,17 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: ebs-pvc
+  name: pvc-claim1
 spec:
+  storageClassName: gp2
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
-      storage: 10Gi
+      storage: 10Gi         #The entire 10Gi PersistentVolume (PV) is bound to your PersistentVolumeClaim (PVC) because Kubernetes does not support partial binding or splitting of a PV across multiple PVCs.
+  selector:
+   matchLabels:
+     app: ebs-pv
 
 # ReadWriteOnce — the volume can be mounted as read-write by a single node
 # ReadOnlyMany — the volume can be mounted read-only by many nodes
