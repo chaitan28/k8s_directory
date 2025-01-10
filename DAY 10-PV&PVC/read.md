@@ -4,15 +4,6 @@
 
 This repository provides examples and explanations of different Kubernetes storage options. Here’s a simple guide to understand how different types of persistent storage work in Kubernetes.
 
-## Storage Types
-
-### EBS-volume
-- Amazon EBS volume in a Kubernetes Pod, you define it in a YAML file.
-- containers are stateless(means once reboot data will be deleted) , so you don’t need to persist data.
-- The Amazon EBS volume must be in the same availability zone as the node where the pod is scheduled.
-- Ensure the node has IAM permissions to access the EBS volume, or use an appropriate ServiceAccount with permissions.
-
-
 ### Persistent Volume (PV)
 - **Purpose**: Represents a piece of storage in the cluster that has been provisioned by an administrator.
 - **Details**: PVs are managed by the cluster and can be dynamically provisioned using storage classes.
