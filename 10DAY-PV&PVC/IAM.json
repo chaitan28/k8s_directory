@@ -1,0 +1,49 @@
+{
+	"Statement": [
+		{
+			"Action": [
+				"s3:GetBucketLocation",
+				"s3:GetEncryptionConfiguration",
+				"s3:ListBucket",
+				"s3:ListBucketVersions"
+			],
+			"Effect": "Allow",
+			"Resource": [
+				"arn:aws:s3:::whytebatl.com"
+			]
+		},
+		{
+			"Action": [
+				"autoscaling:DescribeAutoScalingInstances",
+				"ec2:DescribeInstanceTypes",
+				"ec2:DescribeInstances",
+				"ec2:DescribeRegions",
+				"ecr:BatchCheckLayerAvailability",
+				"ecr:BatchGetImage",
+				"ecr:DescribeRepositories",
+				"ecr:GetAuthorizationToken",
+				"ecr:GetDownloadUrlForLayer",
+				"ecr:GetRepositoryPolicy",
+				"ecr:ListImages",
+				"iam:GetServerCertificate",
+				"iam:ListServerCertificates",
+				"kms:GenerateRandom",
+			    "ec2:DescribeVolumes",               
+                "ec2:CreateVolume",                 
+                "ec2:DeleteVolume",                 
+                "ec2:AttachVolume",                
+                "ec2:DetachVolume",                 
+                "ec2:ModifyVolume",                 
+                "ec2:DescribeVolumeStatus",         
+                "ec2:DescribeVolumeAttribute",    
+                "ec2:DescribeSnapshotAttribute",    
+                "ec2:CreateSnapshot",               
+                "ec2:DeleteSnapshot",               
+                "ec2:DescribeSnapshots"            
+			],
+			"Effect": "Allow",
+			"Resource": "*"
+		}
+	],
+	"Version": "2012-10-17"
+}
