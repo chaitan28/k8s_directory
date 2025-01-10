@@ -23,7 +23,7 @@ This repository provides examples and explanations of different Kubernetes stora
 1. Create 5 PVs.
 2. Use `kubectl get pv` to view them.
 3. Claims can be static or dynamic:
-   - **Static PVC**: Manually create a PV and PVC.
+   - **Static PVC**: Manually create a PV and PVC. <br>
       **PV(EBS)----> PVC ----> ATTACH TO DEPLOYMENT**
       ```sh
         kubectl get pvc
