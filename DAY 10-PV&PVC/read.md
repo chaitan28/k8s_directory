@@ -1,3 +1,5 @@
+![pvc](pvc.png)
+
 # Kubernetes Persistent Storage
 
 This repository provides examples and explanations of different Kubernetes storage options. Here’s a simple guide to understand how different types of persistent storage work in Kubernetes.

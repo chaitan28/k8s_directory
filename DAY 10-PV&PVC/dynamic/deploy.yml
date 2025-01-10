@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ebs-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ebs-app
+  template:
+    metadata:
+      labels:
+        app: ebs-app
+    spec:
+      containers:
+      - name: my-app
+        image: nginx
+        volumeMounts:
+        - mountPath: /data  # Path inside the container
+          name: ebs-storage
+      volumes:
+      - name: ebs-storage
+        persistentVolumeClaim:
+          claimName: ebs-pvc
