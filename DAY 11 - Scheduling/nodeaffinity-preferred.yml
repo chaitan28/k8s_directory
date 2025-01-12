@@ -17,14 +17,14 @@ spec:
       affinity:
         nodeAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 40
+          - weight: 10
             preference:
               matchExpressions:
               - key: env
                 operator: In
                 values:
                 - one
-          - weight: 30
+          - weight: 40                                     #All the pods will deployed on the nodes having label env=two because of weight.
             preference:
               matchExpressions:
               - key: env

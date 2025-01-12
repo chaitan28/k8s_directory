@@ -73,9 +73,19 @@ kubectl apply -f <your-deployment-file>.yml
 # Scale the deployment to observe how pods are distributed
 kubectl scale deployment <deployment-name> --replicas=8
 ```
+### 3. cordon and uncordon the nodes
+- **Drain** : Move the pods from the node to other nodes. This is useful when you want to perform maintenance on the node.
+- **cordon**: Mark a node as unschedulable. Pods will not be scheduled on this node, but existing pods will continue to run. Before cordon, you should drain the node to move the pods to other nodes.
+```sh
+kubectl cordon <node-name>
+```
 
+- **uncordon**: Mark a node as schedulable again. Pods can be scheduled on this node.
+```sh
+kubectl uncordon <node-name>
+```
 
-### 3. Taints & Tolerations
+### 4. Taints & Tolerations
 
 **Taints** are applied to nodes to prevent pods that don't tolerate the taint from being scheduled on them. **Tolerations** are applied to pods to allow them to be scheduled on tainted nodes. This feature is essential for keeping certain workloads separate or ensuring critical workloads are not disrupted.
 
