@@ -30,7 +30,7 @@ kubectl apply -f <your-deployment-file>.yaml
 
 **Node Affinity** allows more complex scheduling decisions based on node labels. Unlike Node Selector, Node Affinity supports multiple label expressions and can differentiate between preferred and required conditions.
 - In Kubernetes, required-hard and preferred-soft are concepts used in pod scheduling to specify node affinities. 
- 1. **requiredDuringSchedulingIgnoredDuringExecution (Required-Hard)**
+     1. **requiredDuringSchedulingIgnoredDuringExecution (Required-Hard)**
 - Specifies rules that must be met for the scheduler to assign the pod to a node. If these rules are not satisfied, the pod will not be scheduled.
 ```sh
 affinity:
