@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app1
+  labels:
+    app: app1
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app: app1
+  template:
+    metadata:
+      labels:
+       app: app1
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+      tolerations:
+       - key: "high-cpu"
+         operator: "Equal"
+         value: "yes"
+         effect: "NoSchedule"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app2
+  labels:
+    app: app2  
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app: app2
+  template:
+     metadata:
+      labels:
+        app: app2
+     spec:
+        containers:
+             - image: nginx
+               name: nginx
+        tolerations:
+           - key: "high-cpu"
+             operator: "Equal"
+             value: "yes"
+             effect: "NoExecute"

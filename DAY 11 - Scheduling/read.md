@@ -101,8 +101,11 @@ kubectl taint nodes <node-name> key=value:NoExecute
 ```
 ```sh
 # Taint nodes to control scheduling
+kubectl describe node/<controlplane-id > | grep -i NoSchedule
 kubectl taint node <node-id> high-cpu=yes:NoSchedule 
 kubectl taint node <node-id> med-cpu=yes:NoExecute
+# UnTaint nodes for again scheduling
+kubectl taint node <node-id> high-cpu=yes:NoSchedule-
 
 # Describe the node to see its taints
 kubectl describe node <node-id> | grep -i high
@@ -150,7 +153,6 @@ kubectl get pods -o wide --no-headers | awk -F" " '{print $1, $8}'
 # Label nodes for Node Affinity
 kubectl label node <node1-id> env=one
 kubectl label node <node2-id> env=two
-kubectl label node <node3-id> env=three
 
 # Scale a deployment
 kubectl scale deployment <deployment-name> --replicas=8
