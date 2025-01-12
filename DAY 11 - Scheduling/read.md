@@ -66,6 +66,8 @@ affinity:
 kubectl label node <node1-id> env=one
 kubectl label node <node2-id> env=two
 
+# Remove the label from the node
+kubectl label node <node1-id> env-
 
 # Deploy a workload with Node Affinity rules
 kubectl apply -f <your-deployment-file>.yml
