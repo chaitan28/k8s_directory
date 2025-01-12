@@ -147,9 +147,6 @@ kubectl label node <node-name> high-perf-cpu=yes
 # Apply a deployment file
 kubectl apply -f <your-deployment-file>.yaml
 
-# Verify pod placement
-kubectl get pods -o wide --no-headers | awk -F" " '{print $1, $8}'
-
 # Label nodes for Node Affinity
 kubectl label node <node1-id> env=one
 kubectl label node <node2-id> env=two
@@ -162,10 +159,8 @@ kubectl taint node <node-id> high-cpu=yes:NoSchedule
 kubectl taint node <node-id> high-cpu=yes:NoExecute
 
 # Remove taints from nodes
-kubectl taint node <node-id> high-cpu-
-kubectl taint node <node-id> med-cpu-
-
-
+kubectl taint node i-0d8f8ddec60f515ca high-cpu=yes:NoSchedule-
+kubectl taint node i-0d8f8ddec60f515ca high-cpu=yes:NoExecute-
 ## Conclusion
 
 This repository provides practical examples and commands to help you understand and implement advanced scheduling techniques in Kubernetes. By mastering these concepts, you can ensure that your applications run efficiently and reliably in a Kubernetes environment.
