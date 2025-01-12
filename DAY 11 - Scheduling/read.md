@@ -90,10 +90,18 @@ kubectl uncordon <node-name>
 **Taints** are applied to nodes to prevent pods that don't tolerate the taint from being scheduled on them. **Tolerations** are applied to pods to allow them to be scheduled on tainted nodes. This feature is essential for keeping certain workloads separate or ensuring critical workloads are not disrupted.
 
 - **Example Use Case:** Ensuring that only specific pods can run on a node reserved for special tasks.
-
+**Taint types**
+- **NoSchedule**: Prevents new pods from being scheduled on the tainted node. Noschedule will not effect current running pods before applying NoSchedule. Pods with a matching toleration can still be scheduled.
+```sh
+kubectl taint nodes <node-name> key=value:NoSchedule
+```
+- **NoExcute**: Prevents new pods from being scheduled on the tainted node. NoExecute will also evict current running pods that do not have a matching toleration.
+```sh
+kubectl taint nodes <node-name> key=value:NoExecute
+```
 ```sh
 # Taint nodes to control scheduling
-kubectl taint node <node-id> high-cpu=yes:NoSchedule
+kubectl taint node <node-id> high-cpu=yes:NoSchedule 
 kubectl taint node <node-id> med-cpu=yes:NoExecute
 
 # Describe the node to see its taints
