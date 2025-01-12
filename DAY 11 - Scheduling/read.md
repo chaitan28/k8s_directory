@@ -159,16 +159,12 @@ kubectl scale deployment <deployment-name> --replicas=8
 
 # Taint nodes
 kubectl taint node <node-id> high-cpu=yes:NoSchedule
-kubectl taint node <node-id> med-cpu=yes:NoExecute
+kubectl taint node <node-id> high-cpu=yes:NoExecute
 
 # Remove taints from nodes
 kubectl taint node <node-id> high-cpu-
 kubectl taint node <node-id> med-cpu-
 
-# Drain and uncordon a node
-kubectl drain <node-id>
-kubectl uncordon <node-id>
-```
 
 ## Conclusion
 
