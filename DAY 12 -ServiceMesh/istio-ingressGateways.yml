@@ -3,7 +3,7 @@ kind: IstioOperator
 metadata:
   name: istio-ingressgateway
 spec:
-  profile: empty # Do not install CRDs or the control plane
+  profile: empty                             # Do not install CRDs or the control plane
   components:
     ingressGateways:
     - name: ingressgateway
