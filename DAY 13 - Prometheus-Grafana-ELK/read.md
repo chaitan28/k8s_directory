@@ -44,6 +44,8 @@ kubectl create namespace prom
 Add the Prometheus Helm repository and install the Prometheus-Grafana stack.
 
 ```bash
+helm repo ls
+helm repo remove prometheus-community
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
 helm install prometheus prometheus-community/kube-prometheus-stack -n prom
@@ -64,13 +66,14 @@ Access Prometheus and Grafana through port forwarding:
 - **Prometheus:**
 
 ```bash
-kubectl port-forward pod/prometheus-prometheus-kube-prometheus-prometheus-0 9090:9090 -n prom
+kubectl port-forward pod/prometheus-prometheus-kube-prometheus-prometheus-0 9090:9090 -n prom --address 0.0.0.0
 ```
 
 - **Grafana:**
 
 ```bash
-kubectl port-forward pod/prometheus-grafana-57b76f9754-44cx7 3000:3000 -n prom
+kubectl port-forward pod/prometheus-grafana-599f549cd4-sdc5t 3000:3000 -n prom --address 0.0.0.0
+
 ```
 
 Access Grafana by navigating to `http://localhost:3000` in your web browser. The default username and password are `admin/prom-operator`.
