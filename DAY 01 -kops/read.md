@@ -65,3 +65,12 @@ chmod 600 /home/ubuntu/.kube/config
 su - ubuntu or sudo su ubuntu
 kubectl get pods
 ```
+
+
+- Rancher installation 
+```sh
+docker run -d --restart=unless-stopped  -p 80:80 -p 443:443  --privileged  rancher/rancher:latest
+docker logs  58219c96294d   2>&1 | grep "Bootstrap Password:"
+Admin@280324
+curl --insecure -sfL https://54.82.26.66/v3/import/6tfkvcrr4zfp2kt8nrc6x4gckj7p7qlkn5bjl4v4ncdxk68v8lp6pg_c-m-9frqpphw.yaml | kubectl apply -f -
+```
