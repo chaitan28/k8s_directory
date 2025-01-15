@@ -1,0 +1,22 @@
+1. Adding Global Credentials
+To add credentials globally in Jenkins:
+
+Go to the Jenkins Dashboard.
+
+Navigate to Manage Jenkins → Manage Credentials.
+
+Select (global) under the Stores scoped to Jenkins section.
+
+Click Add Credentials (on the left).
+
+Fill in the following fields:
+
+Kind: Choose the type of credentials:
+Username with password: For APIs or authentication requiring username/password.
+GITHUB :
+         Username: n.chaitanya2803@gmail.com
+         password: PAT token
+SSH Username with private key: For SSH-based access.
+Secret text: For tokens like GitHub Personal Access Tokens (PAT).
+Certificate: For secure communication with services requiring certificates.
+Other options: Based on plugins (e.g., AWS credentials).
