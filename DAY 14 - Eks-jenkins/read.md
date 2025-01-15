@@ -36,8 +36,16 @@ Before you begin, ensure you have the following:
   sudo apt update
   sudo apt install -y unzip awscli openjdk-11-jdk
   ```
+### **2.awscli installation**
+```sh
+sudo yum remove awscli
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+aws --version
+```
 
-### **2. Install kubectl**
+
+### **3. Install kubectl**
 
 ```bash
 curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -46,7 +54,7 @@ chmod 777 /usr/local/bin/kubectl
 kubectl version --short
 ```
 
-### **3. Install eksctl**
+### **4. Install eksctl**
 
 ```bash
 curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
@@ -64,20 +72,13 @@ eksctl version
 Run the following command to create the EKS cluster control plane:
 
 ```bash
-eksctl create cluster \
---name eks-cluster-1 \
---version 1.29 \
---zones=us-east-1a,us-east-1b,us-east-1c \
---without-nodegroup
+eksctl create cluster --name eks-cluster-1 --version 1.29 --zones=us-east-1a,us-east-1b,us-east-1c  --without-nodegroup
 ```
 
 ### **2. Associate OIDC Provider**
 
 ```bash
-eksctl utils associate-iam-oidc-provider \
---region us-east-1 \
---cluster eks-cluster-1 \
---approve
+eksctl utils associate-iam-oidc-provider --region us-east-1 --cluster eks-cluster-1 --approve
 ```
 
 ### **3. Create Node Group**
