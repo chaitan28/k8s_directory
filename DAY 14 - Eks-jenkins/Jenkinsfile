@@ -1,9 +1,8 @@
 pipeline {
 	agent any
-	environment {
-		DEV_DESTROY = "YES"
-		PROD_DESTROY = "YES"
-	}
+	environment { 
+        DEV_NAMESPACE = 'development' 
+        }
 
 	stages {
 		stage('Checking EKS Access') {
