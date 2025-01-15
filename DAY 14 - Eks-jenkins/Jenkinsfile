@@ -34,6 +34,7 @@ pipeline {
 				withAWS(credentials: 'aws-creds') {
 					sh 'aws eks update-kubeconfig --region us-east-1  --name eks-cluster'
 					sh 'ls -al'
+                    sh 'cd /Eks-jenkins'
 					sh 'kustomize build kustomize/overlays/development'
 					sh 'kubectl apply -k kustomize/overlays/development'
 					sh 'kubectl get pods,deploy,svc -n development'
@@ -52,6 +53,7 @@ pipeline {
 				withAWS(credentials: 'aws-creds') {
 					sh 'aws eks update-kubeconfig --region us-east-1  --name eks-cluster'
 					sh 'ls -al'
+                    sh 'cd /Eks-jenkins'
 					sh 'kubectl delete -k kustomize/overlays/development'
 					sh 'kubectl get pods,deploy,svc -n development'
 				}
@@ -67,6 +69,7 @@ pipeline {
 				withAWS(credentials: 'aws-creds') {
 					sh 'aws eks update-kubeconfig --region us-east-1  --name eks-cluster'
 					sh 'ls -al'
+                    sh 'cd /Eks-jenkins'
 					sh 'kustomize build kustomize/overlays/production'
 					sh 'kubectl apply -k kustomize/overlays/production'
 					sh 'kubectl get pods,deploy,svc -n production'
@@ -85,6 +88,7 @@ pipeline {
 				withAWS(credentials: 'aws-creds') {
 					sh 'aws eks update-kubeconfig --region us-east-1  --name eks-cluster'
 					sh 'ls -al'
+                    sh 'cd /Eks-jenkins'
 					sh 'kubectl delete -k kustomize/overlays/production'
 					sh 'kubectl get pods,deploy,svc -n production'
 				}
