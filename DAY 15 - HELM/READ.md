@@ -1,9 +1,15 @@
 ## Helm chart
-- A Helm chart is a collection of files that describe a related set of Kubernetes resources. Think of it as a Kubernetes application template
+- A Helm chart is a collection of files that describe a related set of Kubernetes resources. Think of it as a Kubernetes application template. installation of helm given below
+```sh
+cd /usr/local/bin
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 777 get-helm.sh
+./get-helm.sh
+```
 
 ### Helm Commands
 - helm create -helloworld- <br>
-  helm rollback -chartname-
+  helm create -chartname-
 ```sh
 tree helloworld/
 ├── Chart.yaml
@@ -25,6 +31,7 @@ tree helloworld/
 - helm template helloworld/
   The command will generate the Kubernetes manifests for the resources defined in the chart, such as Deployments, Services, ConfigMaps before running like a dry run.
 - helm install -myhelloworld- -helloworld-<br>
+**helm install -releasename- -chartname-**
   This command will install the "helloworld" chart and create a release named "myhelloworld<br>
 - helm list -a<br>
 The command helm list -a will list all the Helm releases in your Kubernetes cluster, including those that are currently deleted but still have some history. Here's how you can use it.
@@ -33,7 +40,7 @@ root@ip-172-31-16-226:~# helm list -a
 NAME    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                   APP VERSION
 myhello default         1               2025-01-17 06:29:08.93430527 +0000 UTC  deployed        helloworld-0.1.0        1.16.0     
 ```
-- helm uninstall myhelloworld
+- helm uninstall myhelloworld    
 - helm status myhelloworld
 - helm upgrade myhelloworld helloworld --set replicaCount=2. or # change the replicacount=2 in values.yaml file then apply<br>
 - helm rollback myhelloworld 1          # rollback is made <br>
