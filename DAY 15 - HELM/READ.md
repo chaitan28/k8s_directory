@@ -49,3 +49,4 @@ REVISION        UPDATED                         STATUS          CHART           
 - helm install myhelloworld --debug --dry-run helloworld<br>
   --dry-run Simulates the installation process without actually applying changes to the cluster<br>
 - helm lint helloworld/<br>
+  The helm lint command is used to check a Helm chart for potential issues or errors.
