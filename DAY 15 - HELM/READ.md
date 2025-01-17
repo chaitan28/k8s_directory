@@ -4,9 +4,17 @@
 ### Helm Commands
 - helm create -helloworld- <br>
   helm rollback -chartname-
-
-  This will generate a directory structure with all the necessary files for a Helm chart<br>
 ```sh
+tree helloworld/
+├── Chart.yaml
+├── charts/
+├── templates/
+│   ├── deployment.yaml
+│   ├── _helpers.tpl
+│   ├── service.yaml
+│   └── ingress.yaml
+└── values.yaml
+  This will generate a directory structure with all the necessary files for a Helm chart.
  helloworld/<br>
   **Chart.yaml:**   A YAML file containing information about the chart <br>
   **values.yaml:**  The default configuration values for this chart<br>
