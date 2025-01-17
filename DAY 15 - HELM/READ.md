@@ -2,7 +2,7 @@
 - A Helm chart is a collection of files that describe a related set of Kubernetes resources. Think of it as a Kubernetes application template
 
 ### Helm Commands
-- helm create <helloworld>
+- helm create helloworld <br>
   This will generate a directory structure with all the necessary files for a Helm chart<br>
 ```sh
  helloworld/<br>
