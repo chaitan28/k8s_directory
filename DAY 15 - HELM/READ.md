@@ -5,11 +5,11 @@
 - helm create <helloworld>
   This will generate a directory structure with all the necessary files for a Helm chart<br>
  helloworld/
-  Chart.yaml      # A YAML file containing information about the chart <br>
-  values.yaml     # The default configuration values for this chart<br>
-  charts/         # A directory to store any dependencies<br>
-  templates/      # A directory containing Kubernetes manifest templates<br>
-  .helmignore     # A file to ignore unwanted files when packaging the chart<br>
+  **Chart.yaml:**   A YAML file containing information about the chart <br>
+  **values.yaml:**  The default configuration values for this chart<br>
+  **charts/:**       A directory to store any dependencies<br>
+  **templates/:**    A directory containing Kubernetes manifest templates<br>
+  **.helmignore:**   A file to ignore unwanted files when packaging the chart<br>
 
 - helm install myhelloworld helloworld<br>
 - helm list -a<br>
