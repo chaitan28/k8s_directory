@@ -69,8 +69,8 @@ eksctl version
 
 ### **1. Create EKS Control Plane**
 
-Run the following command to create the EKS cluster control plane:<br>
-optional you directly go with command 3. Because AWS manages directly AWS Control plane component.<br>
+Run the following command to create the EKS cluster control plane (optional):<br>
+you directly go with command 3. Because AWS manages directly AWS Control plane component.<br>
 ```bash
 eksctl create cluster --name eks-cluster-1 --version 1.29 --zones=us-east-1a,us-east-1b,us-east-1c  --without-nodegroup
 ```
@@ -88,9 +88,9 @@ eksctl create nodegroup --cluster=eks-cluster-1 \
 --region=us-east-1 \
 --name=eks-cluster-1-ng-1 \
 --node-type=t3.medium \
---nodes=2 \
---nodes-min=2 \
---nodes-max=4 \
+--nodes=1 \
+--nodes-min=1 \
+--nodes-max=1 \
 --node-volume-size=20 \
 --ssh-access \
 --ssh-public-key=YourKeyPair \
