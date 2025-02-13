@@ -38,7 +38,7 @@ Before you begin, ensure you have the following:
   ```
 ### **2.awscli installation**
 ```sh
-sudo yum remove awscli or sudo apt remove awscli
+sudo yum remove awscli (or) sudo apt remove awscli
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 sudo ./aws/install
