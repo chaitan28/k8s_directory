@@ -89,9 +89,9 @@ eksctl create nodegroup --cluster=eks-cluster-1 \
 --region=us-east-1 \
 --name=eks-cluster-1-ng-1 \
 --node-type=t3.medium \
---nodes=1 \
---nodes-min=1 \
---nodes-max=1 \
+--nodes=2 \
+--nodes-min=2 \
+--nodes-max=3 \
 --node-volume-size=20 \
 --ssh-access \
 --ssh-public-key=YourKeyPair \
