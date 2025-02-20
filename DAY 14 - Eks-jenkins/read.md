@@ -136,7 +136,7 @@ Ensure you have installed the following plugins:
 To delete the EKS cluster:
 
 ```bash
-eksctl delete cluster --name eks-cluster-1
+ eksctl delete cluster --name my-demo-cluster --region us-east-1 
 ```
 
 ---
