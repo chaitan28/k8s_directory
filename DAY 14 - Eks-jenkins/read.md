@@ -73,13 +73,13 @@ eksctl version
 Run the following command to create the EKS cluster control plane (optional):<br>
 you directly go with command 3. Because AWS manages directly AWS Control plane component.<br>
 ```bash
-eksctl create cluster --name eks-cluster-1 --version 1.29 --zones=us-east-1a,us-east-1b,us-east-1c  --without-nodegroup
+eksctl create cluster --name eks-cluster-1 --version 1.29 --region=us-east-1 --zones=us-east-1a,us-east-1b,us-east-1c  --without-nodegroup
 ```
 
 ### **2. Associate OIDC (OpenID Connect) Provider**
 OIDC helps Kubernetes service accounts to use AWS IAM roles.<br>
 ```bash
-eksctl utils associate-iam-oidc-provider --region us-east-1 --cluster eks-cluster-1 --approve
+eksctl utils associate-iam-oidc-provider --region=us-east-1 --cluster eks-cluster-1 --approve
 ```
 
 ### **3. Create Node Group**
