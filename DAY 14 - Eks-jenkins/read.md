@@ -49,10 +49,13 @@ aws --version
 ### **3. Install kubectl**
 
 ```bash
-curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
-sudo mv ./kubectl /usr/local/bin/kubectl
-chmod 777 /usr/local/bin/kubectl
-kubectl version --short
+ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+ echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
+ # output from the above -- kubectl: OK
+ chmod +x kubectl
+ sudo mv kubectl /usr/local/bin/
+ kubectl version --client
 ```
 
 ### **4. Install eksctl**
