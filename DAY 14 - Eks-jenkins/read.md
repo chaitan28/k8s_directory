@@ -105,7 +105,10 @@ eksctl create nodegroup --cluster=eks-cluster-1 \
 --appmesh-access \
 --alb-ingress-access
 ```
-
+### **4. To view all the EKS Resources on aws eks dashboard
+- 1. Go to access ion on the Aws cluster created.
+- 2. Next to IAM access  entries with arn:aws:iam::<id>:root  >>  create a access entry
+- 3. assign AmazonEKSAdminPolicy and AmazonEKSAdminViewPolicy 
 ---
 
 ## **Jenkins Integration**
