@@ -4,6 +4,12 @@ Create A EC2 Instance <br>
 IAM ROLE(ADMIN FULL ACCESS) AND ASSIGN IT TO EC2 <br>
 Connect to  EC2 INSTANCE AND GENERATE SSH ROLE in .ssh/ <br>
 download kops and kubectl to usr/local/bin(default location)
+### Download awscli
+```sh
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+```
 ### Download kubectl
  ```bash
   curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
