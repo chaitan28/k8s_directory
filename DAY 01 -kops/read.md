@@ -10,6 +10,12 @@ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip
 unzip awscliv2.zip
 sudo ./aws/install
 ```
+### Awscli
+```sh
+aws configure
+aws eks list-clusters --region us-east-1
+
+```
 ### Download kubectl
  ```bash
   curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
