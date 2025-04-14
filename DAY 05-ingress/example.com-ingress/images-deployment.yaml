@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: images-deployment
+  labels:
+    app: images
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: images
+  template:
+    metadata:
+      labels:
+        app: images
+    spec:
+      containers:
+      - name: images-container
+        image: your-dockerhub/images:latest  # Replace with your image
+        ports:
+        - containerPort: 5000
