@@ -159,3 +159,12 @@ Feel free to open issues and submit pull requests for any improvements or fixes.
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
+
+## **Export the existing running EKS**
+
+Run the following command to export the cluster config to your local ~/.kube/config
+
+```sh
+aws eks update-kubeconfig --region <region> --name <cluster-name>
+```
+
