@@ -28,19 +28,21 @@ aws eks list-clusters --region us-east-1
   ```
 ### kops 
 ```bash
-wget https://github.com/kubernetes/kops/releases/download/v1.28.7/kops-linux-amd64
-mv kops-linux-amd64  kops
+curl -LO https://github.com/kubernetes/kops/releases/download/v1.30.0/kops-linux-amd64
+chmod +x kops-linux-amd64
+sudo mv kops-linux-amd64 /usr/local/bin/kops
 kops version
 ```
-### nano ~/.bashrc
-- environment variable(export=) is session-specific, meaning it will be lost when the system is rebooted.
+###  Env variables: 
+nano ~/.bashrc
+- environment variable(export=) is session-specific, meaning it will be lost when the system is rebooted.<br>
 export NAME=whytebatl.com<br>
 export KOPS_STATE_STORE=s3://whytebatl.com<br>
 export AWS_REGION=us-east-1<br>
 export CLUSTER_NAME=whytebatl.com<br>
 export EDITOR='/usr/bin/nano'<br>
 If using nano, press CTRL+O, then Enter to save. Press CTRL+X to exit the editor <br>
-After copying the above files to .bashrc run “ source ~/.bashrc ” <br>
+To run after copying . ~/.bashrc  or source ~/.bashrc  <br>
 
 ### Create a Cluster using Kops and generate a cluster file and save it carefully and do neccessary changes
 ```bash
