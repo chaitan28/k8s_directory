@@ -27,7 +27,7 @@ Assigns workloads (Pods) to available nodes.<br>
 4. **Pods:**  <br>
 Acts as Shell for the container or multiple containers where the application is deployed.  It’s good to have one container under each pod. <br>
 
-   **ALL THE COMPONENTS ON MASTER NODE WILL ONLY HAVE COMMUNICATION TO THE API SERVER. KUBELET WILL ONLY TALK TO THE APISERVER**
+   **ALL THE COMPONENTS ON MASTER NODE WILL ONLY HAVE COMMUNICATION TO THE API SERVER. KUBELET WILL ONLY TALK TO THE APISERVER** <br>
    **ALL THE COMPONENTS ARE WORKING AS STATIC PODS BY ITSELF. BUT KUBELET IS DEPLOYED AS DEMON SERVICE**
 
 
