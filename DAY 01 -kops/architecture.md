@@ -1,8 +1,9 @@
 ![KUBERNETES ARCHITECTURE](K8S.jpg)
 ## MASTER NODE <br>
 1. **Api Server** <br>
-Its handles requests (kubectl, other services), and validates configurations.<br>
+Its handles requests (kubectl from admin), and validates configurations.<br>
 2. **Control Manager** <br>
+It always see that cluster is having pods configured as defined in Podspec.yaml file
 Runs control loop processes like:<br>
 Node Controller:            Manages node status.<br>
 Replication Controller:     Ensures desired number of pod replicas.<br>
@@ -20,13 +21,14 @@ Assigns workloads (Pods) to available nodes.<br>
    If Pod is not responding the kubelet will ensure that pod will be replaced or restarted.<br>
    Communicates with the Kubernetes control plane to manage the state of the pods.<br>
 2. **kubeproxy**<br>
-   Communication inside the cluster. Assigns IPs to the pods. Manages kubernetes Services (ClusterIP, NodePort, LoadBalancer)for Pods.<br>
+   Communication inside the cluster. Manages kubernetes Services (ClusterIP, NodePort, LoadBalancer)for Pods. Takes the Request from the users<br>
 3. **container runtime** <br>
    The softwate which responsible  for running container<br>
 4. **Pods:**  <br>
 Acts as Shell for the container or multiple containers where the application is deployed.  It’s good to have one container under each pod. <br>
 
-   **ALL THE COMPONENTS ARE WORKING AS PODS BY ITSELF. BUT KUBELET IS DEPLOYED AS DEMON SERVICE**
+   **ALL THE COMPONENTS ON MASTER NODE WILL ONLY HAVE COMMUNICATION TO THE API SERVER. KUBELET WILL ONLY TALK TO THE APISERVER**
+   **ALL THE COMPONENTS ARE WORKING AS STATIC PODS BY ITSELF. BUT KUBELET IS DEPLOYED AS DEMON SERVICE**
 
 
 ## Features of Kubernetes<br>
