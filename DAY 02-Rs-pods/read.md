@@ -96,8 +96,17 @@ rm -rf kubectx_v0.9.5_linux_x86_64.tar.gz
   ```sh
   kubectl run nginx -n dev --image=nginx --dry-run=client -o yaml
   kubectl create deployment httpd --image=httpd --replicas=3
+  kubectl expose deployment httpd --port=80 --target-port=80 --name=httpd-service
   kubectl create deployment app1 --image=chaitan28/configmaps:kubegame --replicas=4 --dry-run=client -o yaml
   ```
+- Access the ClusterIP:
+   **ClusterIP services** are only accessible from within the cluster, so running `curl` from outside (like your local machine) won't work.<br>
+   - If you're inside a pod, try:
+     ```sh
+     - kubectl run test-pod --rm -it --image=alpine -- sh
+     - apk add curl
+     - curl http://ip:80
+     ```
 - View available resources:
   ```sh
   kubectl api-resources
