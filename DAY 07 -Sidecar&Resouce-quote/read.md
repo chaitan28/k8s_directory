@@ -79,6 +79,44 @@ A container needing only 25% of a 1core can be allocated 250m(0.25 vCPU).
  kubectl delete ns <development
  ```
 
+## **kubectl top nodes: Metrics API Not Available**
+
+### **Fixes:**
+1. **Check if Metrics Server is installed**:
+   ```bash
+   kubectl get deployment metrics-server -n kube-system
+   ```
+   If missing, install:
+   ```bash
+   kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+   ```
+
+2. **Verify API Service Availability**:
+   ```bash
+   kubectl get apiservices | grep metrics
+   ```
+   Ensure `v1beta1.metrics.k8s.io` is registered.
+
+3. **Patch Metrics Server Deployment**:
+   ```bash
+   kubectl patch deployment metrics-server -n kube-system --type='json' -p='[
+     {"op": "add", "path": "/spec/template/spec/hostNetwork", "value": true},
+     {"op": "replace", "path": "/spec/template/spec/containers/0/args", "value": [
+       "--cert-dir=/tmp",
+       "--secure-port=4443",
+       "--kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname",
+       "--kubelet-use-node-status-port",
+       "--metric-resolution=15s",
+       "--kubelet-insecure-tls"
+     ]},
+     {"op": "replace", "path": "/spec/template/spec/containers/0/ports/0/containerPort", "value": 4443}
+   ]'
+   ```
+
+4. **Check Logs for Errors**:
+   ```bash
+   kubectl logs -n kube-system -l k8s-app=metrics-server
+   ```
 ## Resources
 
 - [Kubernetes Documentation on Sidecar Containers](https://kubernetes.io/docs/concepts/workloads/pods/#sidecar-containers)
