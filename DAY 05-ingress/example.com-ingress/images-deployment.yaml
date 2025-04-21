@@ -15,7 +15,7 @@ spec:
         app: images
     spec:
       containers:
-      - name: images-container
-        image: your-dockerhub/images:latest  # Replace with your image
-        ports:
-        - containerPort: 5000
+        - image: kiran2361993/kubegame:v2
+          name: kubegame
+          ports:
+           - containerPort: 80

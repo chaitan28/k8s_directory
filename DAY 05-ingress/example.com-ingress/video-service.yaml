@@ -7,5 +7,5 @@ spec:
     app: video
   ports:
     - port: 80
-      targetPort: 5000
+      targetPort: 80
   type: ClusterIP

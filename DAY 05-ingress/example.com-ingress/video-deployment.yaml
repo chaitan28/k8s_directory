@@ -15,7 +15,7 @@ spec:
         app: video
     spec:
       containers:
-      - name: video-container
-        image: your-dockerhub/video:latest  # Replace with your image
-        ports:
-        - containerPort: 5000
+        - image: kiran2361993/kubegame:v1
+          name: kubegame
+          ports:
+           - containerPort: 80
