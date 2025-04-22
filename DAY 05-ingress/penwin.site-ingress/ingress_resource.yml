@@ -4,9 +4,9 @@ kind: Ingress
 metadata:
   name: k8s-ingress-demo
   annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/use-regex: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/ssl-redirect: "false" # HTTP and HTTPS traffic need to be served without forcing SSL
+    nginx.ingress.kubernetes.io/use-regex: "true"  # Enables regular expressions for path matching. for example /httpd/order -> order /httpd/order/payment -> payment
+    nginx.ingress.kubernetes.io/rewrite-target: /$2 #  This rewrites the request path, preserving part of the original URL.`/nginx/dashboard` → Becomes `/dashboard` inside the service
 spec:
   ingressClassName: nginx
   rules:
