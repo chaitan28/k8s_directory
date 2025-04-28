@@ -28,7 +28,7 @@ spec:
           if [[ $ordinal -eq 0 ]]; then
             cp /mnt/config-map/primary.cnf /mnt/conf.d/
           else
-            cp /mnt/config-map/replica.cnf /mnt/conf.d/
+             cp /mnt/config-map/replica.cnf /mnt/conf.d/
           fi
         volumeMounts:
         - name: conf
@@ -131,7 +131,7 @@ spec:
   - metadata:
       name: data
     spec:
-      storageClassName: gp2     
+      storageClassName: manual   
       accessModes: ["ReadWriteOnce"]
       resources:
         requests:
