@@ -113,3 +113,11 @@ For instance, when draining a node, Kubernetes will ensure that the PDB is respe
 - It works in conjunction with **StatefulSets**, **Deployments**, or other controllers to ensure service continuity during disruptions like node maintenance, upgrades, or scaling activities.
 
 Let me know if you'd like a more detailed example or help with a specific scenario! 😊
+
+```sh
+kubectl drain <nodes>--ignore-daemonsets --delete-emptydir-data
+Command                 | What happens?
+kubectl cordon <node>   | No new pods scheduled there
+kubectl drain <node>    | Evicts existing pods
+kubectl uncordon <node> | Makes node schedulable again
+```

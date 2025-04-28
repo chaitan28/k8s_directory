@@ -1,0 +1,9 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: example-pdb
+spec:
+  minAvailable: 2  # Ensure at least 2 pods are available during disruptions
+  selector:
+    matchLabels:
+      app: myapp  # PDB applies to all pods with the label "app=myapp"

@@ -82,7 +82,10 @@ wget https://github.com/ahmetb/kubectx/releases/download/v0.9.5/kubens_v0.9.5_li
 tar zxvf kubens_v0.9.5_linux_x86_64.tar.gz
 rm -rf kubens_v0.9.5_linux_x86_64.tar.gz
 ```
-
+- check current which namespaces you are in 
+```sh
+kubectl config get-contexts
+```
 - Switch  between clusters
 ```sh
 sudo su
