@@ -1,7 +1,6 @@
 ### What is a **PodDisruptionBudget** (PDB) in Kubernetes?
 
-A **PodDisruptionBudget (PDB)** is a Kubernetes resource that helps you manage **voluntary disruptions** (such as evictions, rolling updates, or node maintenance) by ensuring that a certain number or percentage of pods in a deployment, StatefulSet, or other pod controllers remain available during disruptions.
-
+A **PodDisruptionBudget (PDB)** is a Kubernetes resource that helps you manage **voluntary disruptions** (such as evictions, rolling updates, or node maintenance) by ensuring that a certain number or percentage of pods in a deployment, StatefulSet, or other pod controllers remain available during disruptions.PodDisruptionBudget (PDB) in Kubernetes works with labels.
 It defines the minimum number of pods that must be **available** (or the maximum number of pods that can be **disrupted**) during voluntary disruptions like node maintenance or upgrades. 
 
 ### Key Purpose:
