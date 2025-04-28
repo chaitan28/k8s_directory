@@ -43,6 +43,7 @@ you want to **connect directly to a specific pod**.
 
 A **Headless Service** (`clusterIP: None`) **removes the load balancer** and gives **individual DNS records** for each pod.
 
+![headless](headless.jpg)
 ---
 
 ## 🛠 Why Use a Headless Service with StatefulSet?
