@@ -16,3 +16,6 @@ spec:
     ports:
     - protocol: TCP
       port: 80
+
+
+# kubectl exec -it <frontend-pod-name> -- curl http://<backend-pod-ip>
