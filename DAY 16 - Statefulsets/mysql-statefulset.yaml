@@ -15,7 +15,7 @@ spec:
     spec:
       initContainers:
       - name: init-mysql
-        image: busybox
+        image: debian:bullseye-slim
         command:
         - bash
         - "-c"
