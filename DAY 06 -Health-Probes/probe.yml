@@ -17,7 +17,7 @@ spec:
       containers:
       - image: kiran2361993/kubegame:v1
         name: kubegame
-        readinessProbe:
+        readinessProbe:   #
           httpGet:
             path: /index.html                   # default nginx location for /usr/share/nginx/html/index.html
             port: 80
@@ -29,3 +29,10 @@ spec:
             port: 80
           initialDelaySeconds: 5
           periodSeconds: 5
+
+# If the readiness check fails, Kubernetes will stop sending traffic to this pod until it passes the readiness probe again.
+# This is crucial for ensuring that traffic isn't sent to a pod that isn't fully up and running (e.g., a web server that's still loading resources).
+
+
+# If the liveness check fails repeatedly (by default, Kubernetes will fail the check after 3 failed attempts), Kubernetes will kill the pod and restart it automatically.
+# This helps recover from situations where the pod is alive but in a hung state (e.g., the web server is running but stuck).

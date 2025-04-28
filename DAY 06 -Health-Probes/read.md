@@ -5,6 +5,7 @@
 
 A Readiness Probe determines if a container is ready to handle requests. If the probe fails, the container is temporarily removed from service. From below example, if /healthz is deleted or unavailable in the container, the pod will show running state with unhealthy status. this will not restart the container.
 
+**Dont send the traffic unless the pod is ready**
 
 **Example:**
 
@@ -35,7 +36,12 @@ In this example:
 
 A Liveness Probe ensures that your container is running properly. If the probe fails, Kubernetes will restart the container.From below example, if /healthz is deleted or unavailable in the container, the pod will show running state with unhealthy status. this will restart the container.
 
-
+**if the pod fails kubelet trys to restart the pod**
+```sh
+Probe Type     | Purpose                                     | Action
+readinessProbe | "Is the pod ready to serve traffic?"        | Kubernetes only sends traffic when the pod is ready.
+livenessProbe  | "Is the pod still alive and functioning?"   | If the pod fails the liveness probe, it is restarted.
+```
 **Example:**
 
 ```yaml
