@@ -164,6 +164,24 @@ sudo kubeadm join 172.31.71.210:6443 --token xxxxx --discovery-token-ca-cert-has
 ```
 kubeadm token create --print-join-command
 ```
+## Reset 
+`sudo kubeadm reset` is used to **tear down a Kubernetes cluster** created with kubeadm.
+
+Here’s what it does and what you should know:
+
+* Stops and removes kubelet-managed containers.
+* Removes the `/etc/kubernetes` directory (certs, kubeconfig, manifests).
+* Cleans up kubeadm-related iptables rules.
+
+Once cleaned, you can run your `kubeadm init` command again
+
+```bash
+sudo kubeadm init \
+  --pod-network-cidr=192.168.0.0/16 \
+  --apiserver-advertise-address=<master_private_ip> \
+  --node-name master
+```
+
 
 ## Validation
 
