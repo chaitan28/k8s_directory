@@ -126,6 +126,12 @@ kubectl version --client
 ```
 sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=172.31.89.68 --node-name master
 ```
+--pod-network-cidr=192.168.0.0/16 is used for Calico or Flannel networking.<br>
+
+--apiserver-advertise-address should be the private IP of your master node.<br>
+
+--node-name master sets the Kubernetes node name. <br>
+
 >Note: Copy the copy to the notepad that was generated after the init command completion, we will use that later.
 
 10) Prepare `kubeconfig`
