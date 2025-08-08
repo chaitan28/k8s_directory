@@ -167,7 +167,7 @@ kubeadm token create --print-join-command
 ## Reset 
 `sudo kubeadm reset` is used to **tear down a Kubernetes cluster** created with kubeadm.
 
-### ** Basic usage**
+1) Basic usage
 
 ```bash
 sudo kubeadm reset
@@ -183,7 +183,7 @@ sudo kubeadm reset -f
 * Cleans up kubeadm-related iptables rules.
 ---
 
-### ** Post-reset cleanup (important)**
+2) Post-reset cleanup (important)
 
 After reset, remove networking changes:
 
@@ -200,7 +200,7 @@ sudo ifconfig flannel.1 down 2>/dev/null; sudo ip link delete flannel.1 2>/dev/n
 
 ---
 
-### ** Re-initializing the cluster**
+3) Re-initializing the cluster
 
 Once cleaned, you can run your `kubeadm init` command again, e.g.:
 
