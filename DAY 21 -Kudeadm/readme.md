@@ -124,7 +124,7 @@ kubectl version --client
 9) initialize control plane
 
 ```
-sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=172.31.89.68 --node-name master
+sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=<master_private_ip>  --node-name master
 ```
 --pod-network-cidr=192.168.0.0/16 is used for Calico or Flannel networking.<br>
 
