@@ -86,6 +86,7 @@ systemctl status containerd
 ```
 curl -LO https://github.com/opencontainers/runc/releases/download/v1.1.12/runc.amd64
 sudo install -m 755 runc.amd64 /usr/local/sbin/runc
+runc --version
 ```
 
 6) install cni plugin
@@ -101,19 +102,20 @@ sudo tar Cxzvf /opt/cni/bin cni-plugins-linux-amd64-v1.5.0.tgz
 ```
 sudo apt-get update
 sudo apt-get install -y apt-transport-https ca-certificates curl gpg
-
-curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
-echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.32/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.32/deb/ /" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 
 sudo apt-get update
-sudo apt-get install -y kubelet=1.29.6-1.1 kubeadm=1.29.6-1.1 kubectl=1.29.6-1.1 --allow-downgrades --allow-change-held-packages
-sudo apt-mark hold kubelet kubeadm kubectl
+sudo apt-get install -y kubelet=1.32.1-1.1 kubeadm=1.32.1-1.1 kubectl=1.32.1-1.1 --allow-downgrades --allow-change-held-packages
 
+sudo apt-mark hold kubelet kubeadm kubectl
 kubeadm version
 kubelet --version
 kubectl version --client
+
 ```
->Note: The reason we are installing 1.29, so that in one of the later task, we can upgrade the cluster to 1.30
+>Note: The reason we are installing 1.32.1, so that in one of the later task, we can upgrade the cluster to 1.32.1
 
 8) Configure `crictl` to work with `containerd`
 
