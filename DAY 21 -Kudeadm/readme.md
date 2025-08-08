@@ -167,13 +167,42 @@ kubeadm token create --print-join-command
 ## Reset 
 `sudo kubeadm reset` is used to **tear down a Kubernetes cluster** created with kubeadm.
 
-Here’s what it does and what you should know:
+### ** Basic usage**
 
+```bash
+sudo kubeadm reset
+```
+
+You’ll be asked for confirmation unless you add:
+
+```bash
+sudo kubeadm reset -f
+```
 * Stops and removes kubelet-managed containers.
 * Removes the `/etc/kubernetes` directory (certs, kubeconfig, manifests).
 * Cleans up kubeadm-related iptables rules.
+---
 
-Once cleaned, you can run your `kubeadm init` command again
+### ** Post-reset cleanup (important)**
+
+After reset, remove networking changes:
+
+```bash
+sudo systemctl stop kubelet
+sudo systemctl stop docker  # or containerd, if using it
+
+sudo rm -rf ~/.kube
+sudo iptables -F && sudo iptables -t nat -F && sudo iptables -t mangle -F && sudo iptables -X
+sudo ipvsadm --clear 2>/dev/null
+sudo ifconfig cni0 down 2>/dev/null; sudo ip link delete cni0 2>/dev/null
+sudo ifconfig flannel.1 down 2>/dev/null; sudo ip link delete flannel.1 2>/dev/null
+```
+
+---
+
+### ** Re-initializing the cluster**
+
+Once cleaned, you can run your `kubeadm init` command again, e.g.:
 
 ```bash
 sudo kubeadm init \
@@ -182,7 +211,7 @@ sudo kubeadm init \
   --node-name master
 ```
 
-
+---
 ## Validation
 
 If all the above steps were completed, you should be able to run `kubectl get nodes` on the master node, and it should return all the 3 nodes in ready status.
