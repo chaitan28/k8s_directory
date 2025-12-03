@@ -1,0 +1,68 @@
+kubectl get pods --selector env=dev | wc -l
+
+If you want to get **all DaemonSets in all namespaces**:
+
+```bash
+kubectl get ds -A
+```
+
+or
+
+```bash
+kubectl get daemonsets --all-namespaces
+```
+
+If you want to get DaemonSets in a **specific namespace**:
+
+```bash
+kubectl get ds -n <namespace>
+```
+
+kubectl config set-context --current --namespace=dev
+
+cd /var/lib/kubelet
+cat config.yaml | grep -i staticpod
+
+
+static pods ---> controlplane ---->   /etc/kubernetes/manifests
+ 
+                  node01      ----->  /var/lib/kubelet/config.yaml
+				  
+				  
+				  
+
+/etc/kubernetes/manifests/kube-apiserver.yaml
+
+
+kubectl exec -it podname -- ls -l /app
+
+
+etcd backup:
+
+etcdctl --endpoints=https://[127.0.0.1]:2379 \
+--cacert=/etc/kubernetes/pki/etcd/ca.crt \
+--cert=/etc/kubernetes/pki/etcd/server.crt \
+--key=/etc/kubernetes/pki/etcd/server.key \
+snapshot save /opt/snapshot-pre-boot.db
+
+
+etcd restore:
+
+etcdutl snapshot restore /opt/snapshot-pre-boot.db --data-dir /var/lib/etcd-from-backup
+
+
+Next, we need to update the /etc/kubernetes/manifests/etcd.yaml to point to the newly restored directory, which is /var/lib/etcd-from-backup. 
+The only change that we need to make to the YAML file, is to change the hostPath for the volume called etcd-data from old directory /var/lib/etcd to the new directory /var/lib/etcd-from-backup.
+With this change, /var/lib/etcd on the container points to /var/lib/etcd-from-backup on the controlplane.
+
+When this file is updated, the ETCD pod is automatically re-created as this is a static pod placed under the /etc/kubernetes/manifests directory.
+  ...
+  volumes:
+  - hostPath:
+      path: /var/lib/etcd-from-backup # Newly restored backup directory
+      type: DirectoryOrCreate
+    name: etcd-data
+	
+ This may take a few minutes, and it is expected that kube-controller-manager and kube-scheduler will also restart. To check the containers being restarted.
+ 
+ watch crictl ps
