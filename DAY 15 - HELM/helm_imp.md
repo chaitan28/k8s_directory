@@ -1,0 +1,218 @@
+Perfect. Let’s **create a dummy Helm chart from scratch** for **two images** (frontend + backend).
+No assumptions. Clean and minimal.
+
+---
+
+## 1️⃣ Create Helm chart
+
+```bash
+helm create two-apps
+cd two-apps
+```
+
+---
+
+## 2️⃣ Clean default files
+
+```bash
+rm -rf templates/tests
+rm templates/deployment.yaml
+rm templates/service.yaml
+```
+
+---
+
+## 3️⃣ `values.yaml` (define 2 dummy images)
+
+```yaml
+app1:
+  name: frontend
+  image: nginx
+  tag: "1.25"
+  replicas: 1
+
+app2:
+  name: backend
+  image: httpd
+  tag: "2.4"
+  replicas: 1
+```
+
+---
+
+## 4️⃣ Create Deployment for App1
+
+📄 `templates/deployment-app1.yaml`
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-{{ .Values.app1.name }}
+spec:
+  replicas: {{ .Values.app1.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.app1.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.app1.name }}
+    spec:
+      containers:
+        - name: {{ .Values.app1.name }}
+          image: "{{ .Values.app1.image }}:{{ .Values.app1.tag }}"
+          ports:
+            - containerPort: 80
+```
+
+---
+
+## 5️⃣ Create Deployment for App2
+
+📄 `templates/deployment-app2.yaml`
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-{{ .Values.app2.name }}
+spec:
+  replicas: {{ .Values.app2.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.app2.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.app2.name }}
+    spec:
+      containers:
+        - name: {{ .Values.app2.name }}
+          image: "{{ .Values.app2.image }}:{{ .Values.app2.tag }}"
+          ports:
+            - containerPort: 80
+```
+
+
+
+## 6. Create Service file
+
+📄 **`templates/service-app1.yaml`**
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-{{ .Values.app1.name }}
+spec:
+  type: NodePort
+  selector:
+    app: {{ .Values.app1.name }}
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30080
+```
+
+---
+
+## 7. Service for App2
+
+📄 **`templates/service-app2.yaml`**
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-{{ .Values.app2.name }}
+spec:
+  type: NodePort
+  selector:
+    app: {{ .Values.app2.name }}
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30081
+```
+
+---
+
+## 3️⃣ Install / Upgrade
+
+```bash
+helm upgrade --install demo .
+```
+
+---
+
+## 4️⃣ Access in browser
+
+```text
+http://<NODE-IP>:30080   # frontend (nginx)
+http://<NODE-IP>:30081   # backend (httpd)
+```
+
+Get node IP:
+
+```bash
+kubectl get nodes -o wide
+```
+
+---
+
+## ⚠️ Important notes (production tip)
+
+* NodePort range: **30000–32767**
+* Hardcoding `nodePort` is OK for **learning**
+* In real setups → use **LoadBalancer / Ingress**
+
+---
+
+### Next?
+
+* One **service + ingress**
+* Convert to **ClusterIP**
+* Helm values-driven ports
+* Azure AKS / RKE2 specific setup
+
+Say the word 👍
+
+## 6️⃣ Install Helm chart (dummy test)
+
+```bash
+helm install demo .
+```
+
+Verify:
+
+```bash
+kubectl get pods
+kubectl get deploy
+```
+
+---
+
+## 7️⃣ Expected Output
+
+```
+demo-frontend-xxxxx   Running
+demo-backend-xxxxx    Running
+```
+
+---
+
+## 8️⃣ Package for Helm repo
+
+```bash
+helm package .
+```
+
+Creates:
+
+```
+two-apps-0.1.0.tgz
+```
+
+---
+
