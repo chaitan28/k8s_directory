@@ -9,7 +9,18 @@ No assumptions. Clean and minimal.
 helm create two-apps
 cd two-apps
 ```
+```
+demo/
+├── Chart.yaml        # chart metadata
+├── values.yaml       # default configuration
+├── charts/           # dependent charts
+├── templates/        # k8s YAML templates
+│   ├── deployment.yaml
+│   ├── service.yaml
+│   └── _helpers.tpl
+└── .helmignore
 
+```
 ---
 
 ## 2. Clean default files
