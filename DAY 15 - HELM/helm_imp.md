@@ -3,7 +3,7 @@ No assumptions. Clean and minimal.
 
 ---
 
-## 1️⃣ Create Helm chart
+## 1. Create Helm chart
 
 ```bash
 helm create two-apps
@@ -12,7 +12,7 @@ cd two-apps
 
 ---
 
-## 2️⃣ Clean default files
+## 2. Clean default files
 
 ```bash
 rm -rf templates/tests
@@ -22,7 +22,7 @@ rm templates/service.yaml
 
 ---
 
-## 3️⃣ `values.yaml` (define 2 dummy images)
+## 3️. `values.yaml` (define 2 dummy images)
 
 ```yaml
 app1:
@@ -40,7 +40,7 @@ app2:
 
 ---
 
-## 4️⃣ Create Deployment for App1
+## 4️. Create Deployment for App1
 
 📄 `templates/deployment-app1.yaml`
 
@@ -68,7 +68,7 @@ spec:
 
 ---
 
-## 5️⃣ Create Deployment for App2
+## 5️. Create Deployment for App2
 
 📄 `templates/deployment-app2.yaml`
 
@@ -138,7 +138,7 @@ spec:
 
 ---
 
-## 3️⃣ Install / Upgrade
+## 8. Install / Upgrade
 
 ```bash
 helm upgrade --install demo .
@@ -146,7 +146,7 @@ helm upgrade --install demo .
 
 ---
 
-## 4️⃣ Access in browser
+## 9. Access in browser
 
 ```text
 http://<NODE-IP>:30080   # frontend (nginx)
@@ -161,24 +161,7 @@ kubectl get nodes -o wide
 
 ---
 
-## ⚠️ Important notes (production tip)
-
-* NodePort range: **30000–32767**
-* Hardcoding `nodePort` is OK for **learning**
-* In real setups → use **LoadBalancer / Ingress**
-
----
-
-### Next?
-
-* One **service + ingress**
-* Convert to **ClusterIP**
-* Helm values-driven ports
-* Azure AKS / RKE2 specific setup
-
-Say the word 👍
-
-## 6️⃣ Install Helm chart (dummy test)
+## 10. Install Helm chart (dummy test)
 
 ```bash
 helm install demo .
@@ -193,7 +176,7 @@ kubectl get deploy
 
 ---
 
-## 7️⃣ Expected Output
+## 11. Expected Output
 
 ```
 demo-frontend-xxxxx   Running
@@ -202,7 +185,7 @@ demo-backend-xxxxx    Running
 
 ---
 
-## 8️⃣ Package for Helm repo
+## 12. Package for Helm repo
 
 ```bash
 helm package .
@@ -214,5 +197,15 @@ Creates:
 two-apps-0.1.0.tgz
 ```
 
+## 12. Helpful Commands
+
+```bash
+helm list
+helm status demo 
+helm history demo 
+helm get manifest demo 
+helm get all demo
+helm uninstall demo
+```
 ---
 
