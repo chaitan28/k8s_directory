@@ -245,6 +245,9 @@ helm history demo
 helm get manifest demo 
 helm get all demo
 helm uninstall demo
+helm history demo -n dev-ns
+helm rollback demo 2 -n dev-ns
+
 ```
 ---
 
