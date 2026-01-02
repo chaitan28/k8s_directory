@@ -21,6 +21,34 @@ demo/
 └── .helmignore
 
 ```
+If **`dev-ns` already exists**, just run **without** `--create-namespace`.
+
+### ✅ Correct command
+
+```bash
+helm install demo . -n dev-ns
+```
+
+---
+
+### 🔄 If release already exists
+
+```bash
+helm upgrade --install demo . -n dev-ns
+```
+
+---
+
+### 🔍 Verify
+
+```bash
+kubectl get all -n dev-ns
+helm list -n dev-ns
+```
+
+---
+
+
 ---
 
 ## 2. Clean default files
