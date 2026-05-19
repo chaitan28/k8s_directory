@@ -108,7 +108,7 @@ spec:
 In this deployment:
 
 - **Readiness Probe** checks if the application is ready to serve traffic by accessing `/ready`.Checks whether container is alive. 
-- **Liveness Probe** monitors the health of the container through the `/live` endpoint.Checks whether container is alive.
+- **Liveness Probe** monitors the health of the container through the `/live` endpoint.Checks whether container can receive traffic.
 
 
 ## ALWAYS Readiness Probe and Liveness Probe are deployed in one deployment file. 
